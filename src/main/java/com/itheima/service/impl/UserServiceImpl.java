@@ -17,8 +17,14 @@ public class UserServiceImpl implements UserService {
         return userDao.save(user) > 0;
     }
 
-    public boolean update(User user) {
-        return userDao.update(user) > 0;
+    public boolean upName(Integer userId, String userName) {
+        userDao.updateName(userId,userName);
+        return true;
+    }
+
+    public boolean upPsw(Integer userId, String userName){
+        userDao.updatePsw(userId,userName);
+        return true;
     }
 
     public boolean delete(Integer User_id) {
@@ -44,7 +50,6 @@ public class UserServiceImpl implements UserService {
         }
         else {
             userDao.save(user);
-            user.setUserName("default name");
             return user;
         }
     }

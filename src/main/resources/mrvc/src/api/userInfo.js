@@ -2,30 +2,30 @@ import request from '@/utils/request'
 
 // 获取个人数据
 
-export const getUserData = (userid) => {
-  return request.get('users/info', {
+export const getUserData = (userId) => {
+  return request.post('users/info', {
 
-    userid,
+    userId,
 
   })
 }
 
 // 修改昵称
 
-export const updateUserName = (userid, username) => {
-  console.log(userid, username);
-  return request.post('users/setName', {
-    userid,
-    username,
+export const updateUserName = (userId, userName) => {
+  console.log(userId, userName);
+  return request.put('users/setname', {
+    userId,
+    userName,
   })
 }
 
 // 修改密码
 
-export const updateUserPassword = (userid, userpassword) => {
-  console.log(userid, userpassword);
-  return request.post('users/setPsw', {
-    userid,
-    userpassword,
+export const updateUserPassword = (userId, userPsw) => {
+  console.log(userId, userPsw);
+  return request.put('users/setpsw', {
+    userId,
+    userPsw,
   })
 }

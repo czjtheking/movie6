@@ -24,6 +24,7 @@ instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数
   // 对响应数据做点什么
   const res = response.data
+  console.log(response)
   if (res.code != 200) {
     // 给提示
     Message.error({
