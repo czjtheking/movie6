@@ -1,20 +1,15 @@
 import request from '@/utils/request'
 
 //申请收藏数据
-export const getStoreData = (userid) => {
-  return request.get('page/detail', {
-    params: {
-      userid,
-    }
+export const getStoreData = (userId) => {
+  return request.post('/store/getstore', {
+    userId,
   })
 }
 
 //删除收藏数据
-export const postDeleteStore = (userid, movieid) => {
-  return request.post('page/detail', {
-    params: {
-      userid,
-      movieid,
-    }
+export const postDeleteStore = (storeId) => {
+  return request.post('/store/delstore', {
+    storeId,
   })
 }

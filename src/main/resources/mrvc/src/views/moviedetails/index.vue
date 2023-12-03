@@ -237,26 +237,16 @@ export default {
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
     console.log(this.getMovieId);
     const res = await getMovieDetails(this.getMovieId);
-    /*这些数据都要同过返回结果更新
-      movie_id: 123,
-      movie_name: "孤注一掷",
-      movie_genre: "悬疑",
-      movie_director: "导演",
-      movie_actor: "张艺兴/王传君",
-      movie_intro: "这是一段简介这是一段简介这是一段简介这是一段简介",
-      movie_img: require("@/assets/test2.jpg"),
-      movie_rate: 3.5,
-      movie_link:"bilibili.com"
-      userComments: [
-        {
-          user_id: 0,
-          movie_id: 123,
-          user_name: "林可",
-          context: "TAT",
-          date: "2023/11/28/11:38",
-        }
-      ],
-    */
+    this.movie_id = res.data.movie.movieId;
+    this.movie_name = res.data.movie.movieName;
+    this.movie_genre = res.data.movie.movieGenre;
+    this.movie_director = res.data.movie.movieDirector;
+    this.movie_actor = res.data.movie.movieActor;
+    this.movie_intro = res.data.movie.movieIntro;
+    this.movie_img = res.data.movie.moviePicURL;
+    this.movie_rate = res.data.movie.movieRate;
+    this.movie_link = "暂无";
+    this.userComments = res.data.userComments;
     console.log(res);
   },
   computed: {

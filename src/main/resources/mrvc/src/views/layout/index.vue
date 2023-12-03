@@ -46,7 +46,7 @@ export default {
           movie_name: "电影名",
           movie_id: 113,
         },
-      ], //轮播图
+      ], //轮播图1
       popList: [
         {
           img: require("@/assets/test2.jpg"),
@@ -104,9 +104,9 @@ export default {
   async created() {
     const res = await getHomeData();
     console.log(res);
-    // this.bannerList = res.bannerList; //接收三个数组存入数据
-    // this.popList = res.popList;
-    // this.recomList = res.recomList;
+    this.bannerList = res.data.bannerList; //接收三个数组存入数据
+    this.popList = res.data.popList;
+    this.recomList = res.data.recomList;
   },
 };
 </script>

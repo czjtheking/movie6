@@ -111,7 +111,7 @@ export default {
   async created() {
     const res = await getPopData();
 
-    // this.popList = res.popularList; //获取后台数据
+    this.popList = res.data.popList; //获取后台数据
     console.log(res);
   },
 };

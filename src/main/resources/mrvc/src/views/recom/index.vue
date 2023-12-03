@@ -71,7 +71,7 @@ export default {
   async created() {
     const res = await getRecomData(store.getters.getUserId);
 
-    // this.popList = res.popularList; //获取后台数据
+    this.recomList = res.data.recomList; //获取后台数据
     console.log(res);
   },
 };
