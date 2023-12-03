@@ -3,9 +3,12 @@ package com.itheima.domain;
 public class Movie {
     private String moviePicURL;
     private String movieName;
+    private String movieActor;
     private String movieIntro;
-    private String movieInfor;
     private Integer movieId;
+    private String movieDirector;
+    private String movieRate;
+    private String movieGenre;
 
     public String getMoviePicURL() {
         return moviePicURL;
@@ -23,20 +26,20 @@ public class Movie {
         this.movieName = movieName;
     }
 
+    public String getMovieActor() {
+        return movieActor;
+    }
+
+    public void setMovieActor(String movieActor) {
+        this.movieActor = movieActor;
+    }
+
     public String getMovieIntro() {
         return movieIntro;
     }
 
     public void setMovieIntro(String movieIntro) {
         this.movieIntro = movieIntro;
-    }
-
-    public String getMovieInfor() {
-        return movieInfor;
-    }
-
-    public void setMovieInfor(String movieInfor) {
-        this.movieInfor = movieInfor;
     }
 
     public Integer getMovieId() {
@@ -52,9 +55,36 @@ public class Movie {
         return "Movie{" +
                 "moviePicURL='" + moviePicURL + '\'' +
                 ", movieName='" + movieName + '\'' +
-                ", movieIntro='" + movieIntro + '\'' +
-                ", movieInfor='" + movieInfor + '\'' +
+                ", movieActor='" + movieActor + '\'' +
+                ", movieInfor='" + movieIntro + '\'' +
                 ", movieId=" + movieId +
+                ", movieDirector='" + movieDirector + '\'' +
+                ", movieRate='" + movieRate + '\'' +
+                ", movieGenre='" + movieGenre + '\'' +
                 '}';
+    }
+
+    public String getMovieDirector() {
+        return movieDirector;
+    }
+
+    public void setMovieDirector(String movieDirector) {
+        this.movieDirector = movieDirector;
+    }
+
+    public String getMovieRate() {
+        return movieRate;
+    }
+
+    public void setMovieRate(String movieRate) {
+        this.movieRate = movieRate;
+    }
+
+    public String getMovieGenre() {
+        return movieGenre;
+    }
+
+    public void setMovieGenre(String movieGenre) {
+        this.movieGenre = movieGenre;
     }
 }
