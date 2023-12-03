@@ -1,0 +1,11 @@
+# TODO 配置数据源相关信息
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test #?servierTimezone=UTC
+    username: root
+    password: 123456
+server:
+  port: 80
