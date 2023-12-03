@@ -17,6 +17,9 @@ public interface UserDao {
     @Delete("delete from user where userId = #{userId}")
     public int delete(Integer User_id);
 
+    @Select("select * from user where userId = #{userId}")
+    public User findUser(Integer userId);
+
     @Select("select userAccount from user where userAccount = #{userAccount}")
     public User findByaccount(String userAccount);
 

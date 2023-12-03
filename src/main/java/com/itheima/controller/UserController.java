@@ -25,6 +25,17 @@ public class UserController {
         else return new Result(Code.LOGIN_ERR,"账号或密码错误");
     }
 
+    @PostMapping("/info")
+    public Result getInfo(@RequestBody User user){
+        User newUser = userService.findUser(user.getUserId());
+        if(newUser!=null){
+            return new Result(Code.GET_OK,newUser,"查找成功");
+        }
+        else return new Result(Code.GET_ERR,null,"查找失败");
+    }
+
+
+
     @PostMapping("/register")
     public Result register(@RequestBody User user){
         User newUser = userService.registerService(user);
@@ -36,10 +47,9 @@ public class UserController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public Result update(@RequestBody User user) {
         boolean flag = userService.update(user);
-        System.out.println(user);
         return new Result(flag ? Code.UPDATE_OK:Code.UPDATE_ERR,flag);
     }
 

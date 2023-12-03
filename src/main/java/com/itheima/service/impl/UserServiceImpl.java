@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
         return userDao.delete(User_id) > 0;
     }
 
+    @Override
+    public User findUser(Integer userId) {
+        User user = userDao.findUser(userId);
+        return user;
+    }
 
 
     public User loginInService(String userAccount, String userPsw,boolean userAd){
@@ -39,10 +44,12 @@ public class UserServiceImpl implements UserService {
         }
         else {
             userDao.save(user);
-            user.setUserName(user.getUserAccount()+"name");
+            user.setUserName("default name");
             return user;
         }
     }
+
+
 
 
 }
