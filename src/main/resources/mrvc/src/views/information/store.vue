@@ -68,6 +68,7 @@ export default {
       const res = await postDeleteStore(this.singleStore.store_id);
       this.storeList.splice(this.singleStore.index, 1);
       console.log(this.singleStore.index);
+      this.$message.success("删除成功");
       console.log(res);
     },
     handleDetails(id) {

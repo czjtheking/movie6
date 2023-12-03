@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui';
+import { Loading } from 'element-ui';
 
 
 // 创建axios实例：对创建出来的实例自定义配置
@@ -9,10 +10,13 @@ const instance = axios.create({
   timeout: 5000,
 });
 
+let loadingInstance
 // 自定义配置 - 请求/响应拦截器
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
+  //开启loaging
+  loadingInstance = Loading.service();
   return config;
 }, function (error) {
   // 对请求错误做些什么
@@ -23,6 +27,10 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数
   // 对响应数据做点什么
+  this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
+    loadingInstance.close();
+  });
+
   const res = response.data
   if (res.code != 200) {
     // 给提示
