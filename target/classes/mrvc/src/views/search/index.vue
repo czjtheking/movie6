@@ -97,9 +97,8 @@ export default {
   async created() {
     const res = await getSearchData({
       search_words: this.querySearch,
-      page: this.page,
     });
-    // this.searchList = res.searchList; //获取后台数据
+    this.searchList = res.data.searchList; //获取后台数据
     console.log(res);
   },
 };
