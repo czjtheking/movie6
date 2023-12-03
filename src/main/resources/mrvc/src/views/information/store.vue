@@ -6,9 +6,9 @@
         <template slot-scope="scope">
           <span
             style="margin-left: 10px"
-            @click="handleDetails(scope.row.movie_id)"
+            @click="handleDetails(scope.row.movie.movieId)"
             class="movieName"
-            >{{ scope.row.movie_name }}</span
+            >{{ scope.row.movie.movieName }}</span
           >
           <!-- 这个span后面要换成跳转链接到电影详情页 -->
         </template>
@@ -44,71 +44,15 @@ export default {
     return {
       uid: 1,
       dialogVisible: false,
-      singleStore: { movie_id: 1, index: 1 },
+      singleStore: { store_id: 1, index: 1 },
       storeList: [
         {
-          movie_id: 11,
-          movie_name: "电影名1",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名2",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名3",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名4",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名5",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名6",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名7",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名8",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
-        },
-        {
-          movie_id: 11,
-          movie_name: "电影名",
+          storeId: 1,
+          userId: 21,
+          movie: {
+            movieName: "1",
+            movieId: 1,
+          },
         },
       ],
     };
@@ -117,11 +61,11 @@ export default {
     handleDelete(index, item) {
       this.dialogVisible = true;
       this.singleStore.index = index;
-      this.singleStore.movie_id = item.movie_id;
+      this.singleStore.store_id = item.storeId;
     },
     async confirmDelete() {
       this.dialogVisible = false;
-      const res = await postDeleteStore(this.uid, this.singleStore.movie_id);
+      const res = await postDeleteStore(this.singleStore.store_id);
       this.storeList.splice(this.singleStore.index, 1);
       console.log(this.singleStore.index);
       console.log(res);
@@ -142,7 +86,7 @@ export default {
   async created() {
     this.uid = store.getters.getUserId; //创建页面时，拿取uid然后发起请求获取收藏信息
     const res = await getStoreData(store.getters.getUserId);
-    // this.storeList = res.storeList;
+    this.storeList = res.data.storeList;
     console.log(res);
   },
 };

@@ -64,9 +64,9 @@ export default {
   data() {
     return {
       uid: 0,
-      uname: "Linke",
-      account: "178311",
-      password: "2335667qwe",
+      uname: "",
+      account: "",
+      password: "",
       isShowEditUname: false,
       isShowEditPassword: false,
     };
@@ -80,14 +80,13 @@ export default {
     },
     async updateName() {
       //点击请求修改昵称
-      console.log(this.uid,this.uname)
       const res = await updateUserName(Number(this.uid), this.uname);
       this.isShowEditUname = false;
       console.log(res);
     },
     async updatePassword() {
       //点击请求修改密码
-      const res = await updateUserPassword(this.uid, this.password);
+      const res = await updateUserPassword(Number(this.uid), this.password);
       this.isShowEditPassword = false;
       console.log(res);
     },

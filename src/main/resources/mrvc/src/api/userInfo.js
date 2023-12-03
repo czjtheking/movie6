@@ -3,10 +3,8 @@ import request from '@/utils/request'
 // 获取个人数据
 
 export const getUserData = (userId) => {
-  return request.post('users/info', {
-
+  return request.post('/users/info', {
     userId,
-
   })
 }
 
@@ -14,7 +12,7 @@ export const getUserData = (userId) => {
 
 export const updateUserName = (userId, userName) => {
   console.log(userId, userName);
-  return request.put('users/setname', {
+  return request.post('/users/setName', {
     userId,
     userName,
   })
@@ -24,7 +22,7 @@ export const updateUserName = (userId, userName) => {
 
 export const updateUserPassword = (userId, userPsw) => {
   console.log(userId, userPsw);
-  return request.put('users/setpsw', {
+  return request.post('/users/setPsw', {
     userId,
     userPsw,
   })

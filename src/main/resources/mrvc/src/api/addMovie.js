@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 
-export const addMovie = (moviename, movieintro, genre, director, actor, img) => {
-  return request.post("/passport/login", { //这个路径后面要修改
-    form: {
-      moviename,
-      movieintro,
-      genre,
-      director,
-      actor,
-      img,
-    }
+export const addMovie = (movieName, movieGenre, movieDirector, movieActor, movieIntro, moviePicURL) => {
+  return request.post("/movie/add", { //这个路径后面要修改
+
+    movieName,
+    movieGenre,
+    movieDirector,
+    movieActor,
+    movieIntro,
+    moviePicURL,
+
   });
 }

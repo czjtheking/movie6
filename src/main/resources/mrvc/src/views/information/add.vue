@@ -30,10 +30,11 @@
     ></el-input>
     <el-upload
       class="upload-demo"
-      action="https://jsonplaceholder.typicode.com/posts/"
+      action="http://localhost/movie/uploadPic"
       :limit="1"
       :file-list="fileList"
       :on-change="handleFileUpload"
+      :on-success="upload"
     >
       <!-- 修改action为提交路径 -->
       <el-button size="small" type="primary" class="a">上传电影海报</el-button>
