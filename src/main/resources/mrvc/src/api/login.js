@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 // 登录接口
 export const codeLogin = (userAccount, userPsw, userAd) => {
-  return request.post("/users/login", { //这个路径后面要修
+  return request.post("/users/login", { //这个路径后面要修改
     userAccount,
     userPsw,
     userAd,

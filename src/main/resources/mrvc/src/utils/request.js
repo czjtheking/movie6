@@ -4,7 +4,7 @@ import { Message } from 'element-ui';
 
 // 创建axios实例：对创建出来的实例自定义配置
 const instance = axios.create({
-  baseURL: 'http://localhost',
+  baseURL: 'http://localhost/',
   // 这里写的是接口根目录(后面要修改)
   timeout: 5000,
 });
@@ -23,11 +23,8 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数。
   // 对响应数据做点什么
-  console.log(response)
   const res = response.data
-  console.log(res)
-  // const res = response.data
-  if (res.code != 20021) {
+  if (res.code != 200) {
     // 给提示
     Message.error({
       message: res.msg,

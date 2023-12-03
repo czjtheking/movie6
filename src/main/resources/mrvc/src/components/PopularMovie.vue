@@ -1,7 +1,13 @@
 <template>
   <div class="popular-movie" @click="handleDetails">
     <div class="pic">
-      <img :src="movie.img" alt="" width="100%" height="100%" />
+      <img
+        :src="movie.img"
+        alt=""
+        width="100%"
+        height="100%"
+        style="border-radius: 8px"
+      />
     </div>
     <div class="context">
       <div class="movie-name">{{ movie.movie_name }}</div>
@@ -51,8 +57,7 @@ export default {
 
   .pic {
     height: 240px;
-    width: 12%;
-    background-color: red;
+    width: 13%;
 
     margin-left: 5px;
   }

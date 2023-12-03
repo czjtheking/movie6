@@ -95,7 +95,7 @@ export default {
         justify-content: center;
         transition: 0.3s;
 
-        margin-left: 220px;
+        margin-left: 12vw;
         a {
           height: 80px;
           width: 15vw;

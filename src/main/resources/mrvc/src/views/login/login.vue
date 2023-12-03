@@ -53,8 +53,9 @@ export default {
           userId: res.data.userId,
           isAdmin: res.data.userAd,
           userName: res.data.userName,
-        }); //提交userInfo存储，这里后面改成res.userInfo
-         this.$message.success("登陆成功");
+        }); //提交userInfo存储
+        console.log(res);
+        this.$message.success("登陆成功");
         this.$router.push("/layout");
       }
     },
