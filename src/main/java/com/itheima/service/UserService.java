@@ -31,9 +31,10 @@ public interface UserService {
 
     /**
      * 按id查询
-     * @param id
+     * @param userId
      * @return
      */
+    public User findUser(Integer userId);
 
 
     public User loginInService(String userAccount, String userPsw,boolean userAd);
