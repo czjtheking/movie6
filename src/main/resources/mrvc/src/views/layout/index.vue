@@ -46,7 +46,7 @@ export default {
           movie_name: "电影名",
           movie_id: 113,
         },
-      ], //轮播图
+      ], //轮播图1
       popList: [
         {
           img: require("@/assets/test2.jpg"),
