@@ -63,7 +63,7 @@ export default {
   name: "MyInfor",
   data() {
     return {
-      uid: 233,
+      uid: 0,
       uname: "Linke",
       account: "178311",
       password: "2335667qwe",
@@ -94,9 +94,9 @@ export default {
   async created() {
     this.uid = store.getters.getUserId; //创建页面时，拿取uid然后发起请求获取个人信息
     const res = await getUserData(store.getters.getUserId);
-    // this.uname = res.user_name;
-    // this.account = res.user_account;
-    // this.password = res.user_password;
+    this.uname = res.data.userName;
+    this.account = res.data.userAccount;
+    this.password = res.data.userPsw;
     console.log(res);
   },
 };
