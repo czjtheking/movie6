@@ -2,7 +2,7 @@
   <div class="popular-movie" @click="handleDetails">
     <div class="pic">
       <img
-        :src="movie.img"
+        :src="movie.moviePicURL"
         alt=""
         width="100%"
         height="100%"
@@ -10,10 +10,10 @@
       />
     </div>
     <div class="context">
-      <div class="movie-name">{{ movie.movie_name }}</div>
-      <div class="genre">{{ movie.genre }}</div>
-      <div class="actor">{{ movie.actor }}</div>
-      <div class="movie-intro">{{ movie.movie_intro }}</div>
+      <div class="movie-name">{{ movie.movieName }}</div>
+      <div class="genre">{{ movie.movieGenre }}</div>
+      <div class="actor">{{ movie.movieActor }}</div>
+      <div class="movie-intro">{{ movie.movieIntro }}</div>
     </div>
   </div>
 </template>
@@ -24,12 +24,12 @@ export default {
   props: ["movie"],
   methods: {
     handleDetails() {
-      console.log(this.movie.movie_id);
+      console.log(this.movie.movieId);
       this.$router.push(
         {
           path: "/moviedetails",
           query: {
-            movieId: this.movie.movie_id,
+            movieId: this.movie.movieId,
           },
         },
         () => {},
