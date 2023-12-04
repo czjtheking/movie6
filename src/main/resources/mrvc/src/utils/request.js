@@ -27,9 +27,9 @@ instance.interceptors.request.use(function (config) {
 instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数
   // 对响应数据做点什么
-  this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
-    loadingInstance.close();
-  });
+  // this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
+  loadingInstance.close();
+  // });
 
   const res = response.data
   console.log(response)
