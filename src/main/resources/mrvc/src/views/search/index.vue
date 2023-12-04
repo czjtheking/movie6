@@ -98,7 +98,7 @@ export default {
     const res = await getSearchData({
       search_words: this.querySearch,
     });
-    this.searchList = res.data.searchList; //获取后台数据
+    this.searchList = res.data; //获取后台数据
     console.log(res);
   },
 };
