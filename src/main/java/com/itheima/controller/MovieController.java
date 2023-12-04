@@ -19,9 +19,8 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-    @GetMapping("/search")
+    @PostMapping("/search")
     public Result selectMovie(@RequestBody Movie movie){
-        //System.out.println(movie);
         List<Movie> movieList = movieService.movieSearchService(movie.getMovieName());
         if (movieList!=null)
         {

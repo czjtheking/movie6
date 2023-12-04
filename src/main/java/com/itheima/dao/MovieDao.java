@@ -11,4 +11,6 @@ import java.util.List;
 public interface MovieDao {
     @Select("select * from movie where movieName like concat('%',#{movieName},'%')")
     public List<Movie> searchByname(String movieName);
+
+    //@Select("select")
 }
