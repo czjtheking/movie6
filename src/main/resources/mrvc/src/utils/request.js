@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message } from 'element-ui';
-import { Loading } from 'element-ui';
+// import { Loading } from 'element-ui';
 
 
 // 创建axios实例：对创建出来的实例自定义配置
