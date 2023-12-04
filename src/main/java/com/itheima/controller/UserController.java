@@ -4,8 +4,6 @@ import com.itheima.domain.User;
 import com.itheima.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
@@ -27,6 +25,7 @@ public class UserController {
 
     @PostMapping("/info")
     public Result getInfo(@RequestBody User user){
+
         User newUser = userService.findUser(user.getUserId());
         if(newUser!=null){
             return new Result(Code.GET_OK,newUser,"查找成功");
@@ -47,10 +46,16 @@ public class UserController {
         }
     }
 
-    @PutMapping("/update")
-    public Result update(@RequestBody User user) {
-        boolean flag = userService.update(user);
-        return new Result(flag ? Code.UPDATE_OK:Code.UPDATE_ERR,flag);
+    @PutMapping  ("/setname")
+    public Result setName(@RequestBody User user) {
+        userService.upName(user.getUserId(),user.getUserName());
+        return new Result(Code.UPDATE_OK,"修改用户名成功");
+    }
+
+    @PutMapping("/setpsw")
+    public Result setPsw(@RequestBody User user){
+        userService.upPsw(user.getUserId(),user.getUserPsw());
+        return new Result(Code.UPDATE_OK,"修改密码成功");
     }
 
 

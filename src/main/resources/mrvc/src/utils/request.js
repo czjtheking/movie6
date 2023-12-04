@@ -32,6 +32,7 @@ instance.interceptors.response.use(function (response) {
   });
 
   const res = response.data
+  console.log(response)
   if (res.code != 200) {
     // 给提示
     Message.error({

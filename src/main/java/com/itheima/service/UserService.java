@@ -17,11 +17,12 @@ public interface UserService {
 
     /**
      * 修改
-     * @param user
+     * @param
      * @return
      */
-    public boolean update(User user);
+    public boolean upName(Integer userId, String userName);
 
+    public boolean upPsw(Integer userId, String userPsw);
     /**
      * 按id删除
      * @param User_id
