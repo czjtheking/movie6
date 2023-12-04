@@ -7,6 +7,7 @@
         width="100%"
         height="100%"
         style="border-radius: 8px"
+        referrerpolicy="no-referrer"
       />
     </div>
     <div class="context">
