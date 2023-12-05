@@ -184,9 +184,10 @@ export default {
           context: this.$refs.textRef.value,
           date: new Date().toLocaleString(),
         };
+        console.log(obj);
         const res = await newComment(
-          obj.user_id,
-          obj.user_name,
+          Number(obj.user_id),
+          Number(obj.user_name),
           obj.movie_id,
           obj.context,
           obj.date
@@ -207,14 +208,15 @@ export default {
       });
       console.log(res);
     },
-    async deleteComment(id) {
+    deleteComment(id) {
       this.dialogVisible = true;
       this.nowCommentId = id;
+      console.log("删除:", id);
     },
     async confirmDelete() {
       this.dialogVisible = false;
+      console.log("删除:", this.nowCommentId);
       const res = await deleteComments(Number(this.nowCommentId));
-      console.log(this.nowCommentId);
       //从网页中遍历删除指定评论
       this.userComments.forEach((ele, index) => {
         if (ele.comment_id === this.nowCommentId) {
