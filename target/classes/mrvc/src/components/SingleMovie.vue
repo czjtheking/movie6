@@ -1,9 +1,16 @@
 <template>
   <div class="single-movie" @click="handleDetails">
-    <img :src="movie.img" alt="" width="100%" height="100%" class="movie-img" />
+    <img
+      :src="movie.moviePicURL"
+      alt=""
+      width="100%"
+      height="100%"
+      class="movie-img"
+      referrerpolicy="no-referrer"
+    />
     <div class="info">
-      <p class="name-m">{{ movie.movie_name }}</p>
-      <p class="actor-m">{{ movie.actor }}</p>
+      <p class="name-m">{{ movie.movieName }}</p>
+      <p class="actor-m">{{ movie.movieActor }}</p>
     </div>
   </div>
 </template>
@@ -18,7 +25,7 @@ export default {
         {
           path: "/moviedetails",
           query: {
-            id: this.movie.movie_id,
+            id: this.movie.movieId,
           },
         },
         () => {},

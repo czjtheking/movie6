@@ -3,7 +3,7 @@ import request from '@/utils/request'
 
 //提交评论
 export const newComment = (userId, movieId, userName, context, date) => {
-  return request.post("/movie/comment", { //这个路径后面要修改
+  return request.post("/movies/comment", { //这个路径后面要修改
     userId,
     movieId,
     userName,
@@ -14,7 +14,7 @@ export const newComment = (userId, movieId, userName, context, date) => {
 
 //提交收藏
 export const storeMovie = (userId, movieId) => {
-  return request.post("/movie/store", {
+  return request.post("/movies/store", {
     userId,
     movieId,
   })
@@ -22,7 +22,7 @@ export const storeMovie = (userId, movieId) => {
 
 //提交评分
 export const rateMovie = (userId, movieId, rateNum) => {
-  return request.post("/movie/rate", {
+  return request.post("/movies/rate", {
     userId,
     movieId,
     rateNum,
@@ -31,14 +31,14 @@ export const rateMovie = (userId, movieId, rateNum) => {
 
 // 请求电影信息
 export const getMovieDetails = (movieId) => {
-  return request.post("/movie/details", {
+  return request.post("/movies/details", {
     movieId,
   })
 }
 
 //删除评论
 export const deleteComments = (commentId) => {
-  return request.post("/movie/delcomment", {
+  return request.post("/movies/delcomment", {
     commentId
   })
 }

@@ -55,7 +55,11 @@ export default {
           userName: res.data.userName,
         }); //提交userInfo存储
         console.log(res);
-        this.$message.success("登陆成功");
+        this.$message.success({
+          message: "登陆成功",
+          duration: 1000,
+          offset: 75,
+        });
         this.$router.push("/layout");
       }
     },

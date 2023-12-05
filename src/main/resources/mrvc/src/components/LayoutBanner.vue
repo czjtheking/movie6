@@ -79,7 +79,7 @@ export default {
       bottom: -300px;
       right: 0px;
       font-size: 25px;
-      color: #d3dce6;
+      color: #e8edf3;
       line-height: 40px;
       padding: 5px 0;
       padding-right: 35px;

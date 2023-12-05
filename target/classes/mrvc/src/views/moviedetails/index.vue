@@ -134,7 +134,7 @@ export default {
       movie_intro: "这是一段简介这是一段简介这是一段简介这是一段简介",
       movie_img: require("@/assets/test2.jpg"),
       movie_rate: 8.5,
-      movie_link: "https://www.baidu.com",
+      movie_link: "暂无",
       rateNum: 0,
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
@@ -166,7 +166,11 @@ export default {
         this.movie_id,
         this.rateNum
       );
-      this.$message.success("评分成功");
+      this.$message.success({
+        message: "评分成功",
+        duration: 1000,
+        offset: 75,
+      });
       console.log(res);
     },
     setFocus() {
@@ -213,7 +217,11 @@ export default {
     async handleStore() {
       //用户点击收藏，提交收藏请求
       const res = await storeMovie(store.getters.getUserId, this.movie_id);
-      this.$message.success("收藏成功");
+      this.$message.success({
+        message: "收藏成功",
+        duration: 1000,
+        offset: 75,
+      });
       console.log(res);
     },
     async deleteComment(id) {
@@ -230,7 +238,11 @@ export default {
           this.userComments.splice(index, 1);
         }
       });
-      this.$message.success("删除成功");
+      this.$message.success({
+        message: "删除成功",
+        duration: 1000,
+        offset: 75,
+      });
       console.log(res);
     },
   },

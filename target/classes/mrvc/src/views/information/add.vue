@@ -30,7 +30,7 @@
     ></el-input>
     <el-upload
       class="upload-demo"
-      action="http://localhost/movie/uploadPic"
+      action="http://localhost/movies/uploadPic"
       :limit="1"
       :file-list="fileList"
       :on-change="handleFileUpload"
