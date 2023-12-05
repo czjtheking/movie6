@@ -46,59 +46,9 @@ export default {
           movieName: "这个杀手不太冷",
           movieId: 5,
         },
-      ], //轮播图1
-      popList: [
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 121,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 122,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 123,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 124,
-        },
-      ], //热门
-      recomList: [
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 121,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 122,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 123,
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          movie_id: 124,
-        },
-      ], //推荐
+      ], //轮播图
+      popList: [], //热门
+      recomList: [], //推荐
     };
   },
   async created() {
