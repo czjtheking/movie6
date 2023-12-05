@@ -34,4 +34,9 @@ public class MovieServiceImpl implements MovieService {
         boolean fin = movieList1.addAll(movieList2);
         return movieList1;
     }
+
+    @Override
+    public void addMovieService(Movie movie) {
+        movieDao.addMovie(movie);
+    }
 }

@@ -48,5 +48,12 @@ public class MovieController {
         return new Result(Code.GET_OK,movieList,"成功");
     }
 
+    @PostMapping("/add")
+    public Result addMovie(@RequestBody Movie movie){
+        System.out.println(movie);
+        movieService.addMovieService(movie);
+        return new Result(Code.GET_OK,"添加成功");
+    }
+
 
 }

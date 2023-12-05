@@ -2,6 +2,7 @@ package com.itheima.dao;
 
 
 import com.itheima.domain.Movie;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,6 +21,9 @@ public interface MovieDao {
 
     @Select("select * from movie order by rand() limit 4")
     public List<Movie> searchMainPop();
+
+    @Insert("insert into movie (movieName,movieGenre,movieDirector,movieActor,movieIntro,moviePicURL) values (#{movieName},#{movieGenre},#{movieDirector},#{movieActor},#{movieIntro},#{moviePicURL})")
+    public void addMovie(Movie movie);
 
     //@Select("select")
 }
