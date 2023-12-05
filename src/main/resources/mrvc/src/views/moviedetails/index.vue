@@ -249,8 +249,8 @@ export default {
   async created() {
     this.isAdmin = store.getters.getAuth;
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
-    console.log(this.getMovieId);
-    const res = await getMovieDetails(this.getMovieId);
+    console.log(Number(this.getMovieId));
+    const res = await getMovieDetails(Number(this.getMovieId));
     this.movie_id = res.data.movie.movieId;
     this.movie_name = res.data.movie.movieName;
     this.movie_genre = res.data.movie.movieGenre;
