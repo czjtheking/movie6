@@ -77,6 +77,14 @@ export default {
     this.searchList = res.data; //获取后台数据
     console.log(res);
   },
+  watch: {
+    $route: async function (to, from) {
+      console.log(to, from);
+      const res = await getSearchData(this.querySearch);
+      this.searchList = res.data; //获取后台数据
+      console.log(res);
+    },
+  },
 };
 </script>
 
