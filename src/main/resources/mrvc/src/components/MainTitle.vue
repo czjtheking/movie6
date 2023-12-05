@@ -1,6 +1,6 @@
 <template>
   <div class="main-title">
-    <h2>个性化电影推荐系统</h2>
+    <h2>个性化电影推荐系统<i class="el-icon-video-camera-solid"></i></h2>
     <div class="search">
       <input type="text" class="search-input" v-model="search_words" />
       <div class="el-icon-search search-icon" @click="goSearch"></div>

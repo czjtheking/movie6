@@ -22,29 +22,34 @@ export default {
       bannerList: [
         //这里先设置默认
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 111,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 112,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
+        },
+        {
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
       ], //轮播图1
       popList: [
@@ -104,9 +109,9 @@ export default {
   async created() {
     const res = await getHomeData();
     console.log(res);
-    this.bannerList = res.data.bannerList; //接收三个数组存入数据
-    this.popList = res.data.popList;
-    this.recomList = res.data.recomList;
+    this.bannerList = res.data.slice(0, 5); //接收三个数组存入数据
+    this.popList = res.data.slice(5, 9);
+    this.recomList = res.data.slice(9);
   },
 };
 </script>
