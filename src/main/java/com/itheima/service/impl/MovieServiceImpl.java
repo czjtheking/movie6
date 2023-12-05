@@ -26,4 +26,12 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> moviePopService() {
         return movieDao.searchRandom();
     }
+
+    @Override
+    public List<Movie> movieMainService() {
+        List<Movie> movieList1 = movieDao.searchBanner();
+        List<Movie> movieList2 = movieDao.searchMainPop();
+        boolean fin = movieList1.addAll(movieList2);
+        return movieList1;
+    }
 }

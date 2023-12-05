@@ -6,6 +6,7 @@ import com.itheima.domain.Result;
 import com.itheima.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,9 +31,11 @@ public class MovieController {
     }
 
 
-    @PostMapping("/pop")
-    public Result selectPop(){
-        List<Movie> movieList = movieService.moviePopService();
-        return new Result(Code.GET_OK,movieList,"查找成功");
-    }
+    //@PostMapping("/pop")
+    //public Result selectPop(){
+        //List<Movie> movieList = movieService.moviePopService();
+        //return new Result(Code.GET_OK,movieList,"查找成功");
+    //}
+
+
 }

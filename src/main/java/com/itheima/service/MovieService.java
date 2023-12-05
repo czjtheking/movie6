@@ -10,4 +10,5 @@ import java.util.List;
 public interface MovieService {
     public List<Movie> movieSearchService(String movieName);
     public List<Movie> moviePopService();
+    public List<Movie> movieMainService();
 }

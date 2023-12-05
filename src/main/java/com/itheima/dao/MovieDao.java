@@ -15,5 +15,11 @@ public interface MovieDao {
     @Select("select * from movie order by rand() limit 10")
     public List<Movie> searchRandom();
 
+    @Select("select * from movie limit 5")
+    public List<Movie> searchBanner();
+
+    @Select("select * from movie order by rand() limit4")
+    public List<Movie> searchMainPop();
+
     //@Select("select")
 }
