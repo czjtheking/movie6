@@ -82,7 +82,7 @@
         <ul>
           <li v-for="(item, index) in userComments" :key="index">
             <div class="comment2">
-              <p class="name" ref="u_name">{{ item.user_name }}</p>
+              <p class="name" ref="u_name">{{ item.userName }}</p>
               <p class="par" ref="u_par">{{ item.context }}</p>
               <p class="time" ref="u_time">{{ item.date }}</p>
             </div>
@@ -91,7 +91,7 @@
                 slot="reference"
                 class="delete-btn"
                 type="danger"
-                @click="deleteComment(item.comment_id)"
+                @click="deleteComment(item.commentId)"
                 ><i class="el-icon-delete"></i
               ></el-button>
             </div>
@@ -138,24 +138,7 @@ export default {
       rateNum: 0,
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
-      userComments: [
-        {
-          comment_id: 1,
-          user_id: 0,
-          movie_id: 123,
-          user_name: "林可",
-          context: "TAT",
-          date: "2023/11/28/11:38",
-        },
-        {
-          comment_id: 2,
-          user_id: 0,
-          movie_id: 123,
-          user_name: "点点",
-          context: "XD",
-          date: "2023/11/28/11:37",
-        },
-      ],
+      userComments: [],
     };
   },
   methods: {
@@ -201,9 +184,10 @@ export default {
           context: this.$refs.textRef.value,
           date: new Date().toLocaleString(),
         };
+        console.log(obj);
         const res = await newComment(
-          obj.user_id,
-          obj.user_name,
+          Number(obj.user_id),
+          Number(obj.user_name),
           obj.movie_id,
           obj.context,
           obj.date
@@ -224,14 +208,15 @@ export default {
       });
       console.log(res);
     },
-    async deleteComment(id) {
+    deleteComment(id) {
       this.dialogVisible = true;
       this.nowCommentId = id;
+      console.log("删除:", id);
     },
     async confirmDelete() {
       this.dialogVisible = false;
-      const res = await deleteComments(this.nowCommentId);
-      console.log(this.nowCommentId);
+      console.log("删除:", this.nowCommentId);
+      const res = await deleteComments(Number(this.nowCommentId));
       //从网页中遍历删除指定评论
       this.userComments.forEach((ele, index) => {
         if (ele.comment_id === this.nowCommentId) {
@@ -249,8 +234,8 @@ export default {
   async created() {
     this.isAdmin = store.getters.getAuth;
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
-    console.log(this.getMovieId);
-    const res = await getMovieDetails(this.getMovieId);
+    console.log(Number(this.getMovieId));
+    const res = await getMovieDetails(Number(this.getMovieId));
     this.movie_id = res.data.movie.movieId;
     this.movie_name = res.data.movie.movieName;
     this.movie_genre = res.data.movie.movieGenre;
@@ -296,7 +281,7 @@ export default {
     margin: 0 auto;
   }
   .main {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -347,7 +332,7 @@ export default {
     }
   }
   .store {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -368,7 +353,7 @@ export default {
     }
   }
   .link {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -395,7 +380,7 @@ export default {
     }
   }
   .rate {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -418,7 +403,7 @@ export default {
   .comment {
     height: 110px;
     width: 80vw;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -544,7 +529,7 @@ export default {
       list-style: none;
       display: flex;
 
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.7);
       box-shadow: 0.5px 0.5px 2px 0.5px rgba(0, 0, 0, 0.5);
 
       border-radius: 10px;
