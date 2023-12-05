@@ -134,7 +134,7 @@ export default {
       movie_intro: "这是一段简介这是一段简介这是一段简介这是一段简介",
       movie_img: require("@/assets/test2.jpg"),
       movie_rate: 8.5,
-      movie_link: "https://www.baidu.com",
+      movie_link: "暂无",
       rateNum: 0,
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
