@@ -184,9 +184,10 @@ export default {
           context: this.$refs.textRef.value,
           date: new Date().toLocaleString(),
         };
+        console.log(obj);
         const res = await newComment(
-          obj.user_id,
-          obj.user_name,
+          Number(obj.user_id),
+          Number(obj.user_name),
           obj.movie_id,
           obj.context,
           obj.date
