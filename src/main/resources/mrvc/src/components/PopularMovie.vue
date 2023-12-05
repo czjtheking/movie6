@@ -30,7 +30,7 @@ export default {
         {
           path: "/moviedetails",
           query: {
-            movieId: this.movie.movieId,
+            id: this.movie.movieId,
           },
         },
         () => {},
