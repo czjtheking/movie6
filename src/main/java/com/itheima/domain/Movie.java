@@ -7,7 +7,7 @@ public class Movie {
     private String movieIntro;
     private Integer movieId;
     private String movieDirector;
-    private String movieRate;
+    private double movieRate;
     private String movieGenre;
 
     public String getMoviePicURL() {
@@ -72,11 +72,11 @@ public class Movie {
         this.movieDirector = movieDirector;
     }
 
-    public String getMovieRate() {
+    public double getMovieRate() {
         return movieRate;
     }
 
-    public void setMovieRate(String movieRate) {
+    public void setMovieRate(double movieRate) {
         this.movieRate = movieRate;
     }
 

@@ -187,8 +187,8 @@ export default {
         console.log(obj);
         const res = await newComment(
           Number(obj.user_id),
-          Number(obj.user_name),
-          obj.movie_id,
+            Number(obj.movie_id),
+            obj.user_name,
           obj.context,
           obj.date
         );
@@ -219,7 +219,7 @@ export default {
       const res = await deleteComments(Number(this.nowCommentId));
       //从网页中遍历删除指定评论
       this.userComments.forEach((ele, index) => {
-        if (ele.comment_id === this.nowCommentId) {
+        if (ele.commentId === this.nowCommentId) {
           this.userComments.splice(index, 1);
         }
       });
