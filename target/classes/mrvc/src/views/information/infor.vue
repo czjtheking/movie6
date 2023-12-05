@@ -82,12 +82,14 @@ export default {
       //点击请求修改昵称
       const res = await updateUserName(Number(this.uid), this.uname);
       this.isShowEditUname = false;
+      this.$message.success("修改成功");
       console.log(res);
     },
     async updatePassword() {
       //点击请求修改密码
       const res = await updateUserPassword(Number(this.uid), this.password);
       this.isShowEditPassword = false;
+      this.$message.success("修改成功");
       console.log(res);
     },
   },

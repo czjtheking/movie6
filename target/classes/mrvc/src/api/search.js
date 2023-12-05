@@ -2,18 +2,17 @@ import request from '@/utils/request'
 
 // 获取搜索数据
 
-export const getSearchData = (obj) => {
-  const { keyWords } = obj
-  console.log(obj);
-  return request.post('/search', {
-    keyWords,
+export const getSearchData = (movieName) => {
+  console.log(movieName);
+  return request.get('/movies/search', {
+    movieName,
   })
 }
 
 // 获取热门
 
 export const getPopData = () => {
-  return request.post('/pop', {
+  return request.post('/movies/pop', {
 
   })
 }
@@ -21,7 +20,7 @@ export const getPopData = () => {
 // 获取推荐
 
 export const getRecomData = (userId) => {
-  return request.post('/recommend', {
+  return request.post('/movies/recommend', {
     userId,
 
   })

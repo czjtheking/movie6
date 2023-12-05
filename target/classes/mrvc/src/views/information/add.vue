@@ -83,6 +83,7 @@ export default {
       this.director = "";
       this.actor = "";
       this.img = "";
+      this.$message.success("添加成功");
       console.log(res);
     },
   },
