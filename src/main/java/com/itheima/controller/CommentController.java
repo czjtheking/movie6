@@ -1,5 +1,7 @@
 package com.itheima.controller;
 import com.itheima.domain.Comment;
+import com.itheima.domain.Details;
+import com.itheima.domain.Movie;
 import com.itheima.domain.Result;
 import com.itheima.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
@@ -41,4 +43,15 @@ public class CommentController {
         return new Result(Code.GET_OK,"删除成功");
     }
 
+    /**
+     * 电影请求
+     */
+    @PostMapping("/details")
+    public Result query(@RequestBody Movie movie){
+        log.info("电影请求: {}",movie);
+        Movie movie1 = commentService.query1(movie);
+        List<Comment> commentList = commentService.query2(movie);
+        Details details = new Details(movie1,commentList);
+        return new Result(Code.GET_OK, details ,"删除成功");
+    }
 }

@@ -9,5 +9,5 @@ public class Comment {
     private String userName;
     private String context;
 
-    private LocalDateTime date;
+    private String date;
 }
