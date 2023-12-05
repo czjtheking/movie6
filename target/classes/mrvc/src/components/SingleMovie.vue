@@ -6,7 +6,10 @@
       width="100%"
       height="100%"
       class="movie-img"
+<<<<<<< HEAD
       referrerpolicy="no-referrer"
+=======
+>>>>>>> 2889f087f9a19bf76b610a71594a2819fce66368
     />
     <div class="info">
       <p class="name-m">{{ movie.movieName }}</p>

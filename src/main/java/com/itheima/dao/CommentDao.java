@@ -3,6 +3,7 @@ package com.itheima.dao;
 import com.itheima.domain.Comment;
 
 import com.itheima.domain.Comment;
+import com.itheima.domain.Movie;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -12,13 +13,29 @@ public interface CommentDao {
      * 提交评论
      * @param comment
      */
-    @Insert("insert into comment (user_id, movie_id, user_name, context, date) values (#{userId},#{movieId},#{userName},#{context},#{data})")
+    @Insert("insert into comments (userId, movieId, userName, context, date) values (#{userId},#{movieId},#{userName},#{context},#{date})")
     void saveComment(Comment comment);
 
     /**
      * 删除评论
      * @param comment
      */
-    @Delete("delete from comment where comment_id = #{commentId}")
+    @Delete("delete from comments where commentId = #{commentId}")
     void deletecomment(Comment comment);
+
+    /**
+     * 电影请求1
+     * @param movie
+     * @return
+     */
+    @Select("select * from movie where movieId = #{movieId}")
+    Movie query1(Movie movie);
+
+    /**
+     * 电影请求2
+     * @param movie
+     * @return
+     */
+    @Select("select * from comments where movieId = #{movieId}")
+    List<Comment> query2(Movie movie);
 }

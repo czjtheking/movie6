@@ -43,6 +43,7 @@ export default {
     return {
       recomList: [
         //这里设置默认后面改
+<<<<<<< HEAD
         {
           movieId: 1,
           movieName: "电影名",
@@ -93,6 +94,8 @@ export default {
           moviePicURL: 1,
           movieRate: 1,
         },
+=======
+>>>>>>> 2889f087f9a19bf76b610a71594a2819fce66368
       ],
     };
   },

@@ -1,6 +1,7 @@
 package com.itheima.service.impl;
 import com.itheima.dao.CommentDao;
 import com.itheima.domain.Comment;
+import com.itheima.domain.Movie;
 import com.itheima.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,15 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void deletecomment(Comment comment) {
         CommentMapper.deletecomment(comment);
+    }
+
+    @Override
+    public Movie query1(Movie movie) {
+        return CommentMapper.query1(movie);
+    }
+
+    @Override
+    public List<Comment> query2(Movie movie) {
+        return CommentMapper.query2(movie);
     }
 }
