@@ -82,7 +82,7 @@
         <ul>
           <li v-for="(item, index) in userComments" :key="index">
             <div class="comment2">
-              <p class="name" ref="u_name">{{ item.user_name }}</p>
+              <p class="name" ref="u_name">{{ item.userName }}</p>
               <p class="par" ref="u_par">{{ item.context }}</p>
               <p class="time" ref="u_time">{{ item.date }}</p>
             </div>
@@ -91,7 +91,7 @@
                 slot="reference"
                 class="delete-btn"
                 type="danger"
-                @click="deleteComment(item.comment_id)"
+                @click="deleteComment(item.commentId)"
                 ><i class="el-icon-delete"></i
               ></el-button>
             </div>
@@ -138,24 +138,7 @@ export default {
       rateNum: 0,
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
-      userComments: [
-        {
-          comment_id: 1,
-          user_id: 0,
-          movie_id: 123,
-          user_name: "林可",
-          context: "TAT",
-          date: "2023/11/28/11:38",
-        },
-        {
-          comment_id: 2,
-          user_id: 0,
-          movie_id: 123,
-          user_name: "点点",
-          context: "XD",
-          date: "2023/11/28/11:37",
-        },
-      ],
+      userComments: [],
     };
   },
   methods: {
@@ -230,7 +213,7 @@ export default {
     },
     async confirmDelete() {
       this.dialogVisible = false;
-      const res = await deleteComments(this.nowCommentId);
+      const res = await deleteComments(Number(this.nowCommentId));
       console.log(this.nowCommentId);
       //从网页中遍历删除指定评论
       this.userComments.forEach((ele, index) => {
