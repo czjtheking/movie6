@@ -31,11 +31,11 @@ public class MovieController {
     }
 
 
-    //@PostMapping("/pop")
-    //public Result selectPop(){
-        //List<Movie> movieList = movieService.moviePopService();
-        //return new Result(Code.GET_OK,movieList,"查找成功");
-    //}
+    @PostMapping("/pop")
+    public Result selectPop(){
+        List<Movie> movieList = movieService.moviePopService();
+        return new Result(Code.GET_OK,movieList,"查找成功");
+    }
 
 
 }
