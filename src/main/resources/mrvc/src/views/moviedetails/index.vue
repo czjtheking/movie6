@@ -187,8 +187,8 @@ export default {
         console.log(obj);
         const res = await newComment(
           Number(obj.user_id),
-          Number(obj.user_name),
-          obj.movie_id,
+          Number(obj.movie_id),
+          obj.user_name,
           obj.context,
           obj.date
         );
