@@ -37,7 +37,7 @@ public class MovieController {
         return new Result(Code.GET_OK,movieList,"查找成功");
     }
 
-    @PostMapping("/main")
+    @PostMapping("/home")
     public Result giveMain(){
         List<Movie> movieList = movieService.movieMainService();
         List<Movie> movieList2 = new ArrayList<>();
