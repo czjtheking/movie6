@@ -279,7 +279,7 @@ export default {
     margin: 0 auto;
   }
   .main {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -330,7 +330,7 @@ export default {
     }
   }
   .store {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -351,7 +351,7 @@ export default {
     }
   }
   .link {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -378,7 +378,7 @@ export default {
     }
   }
   .rate {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -401,7 +401,7 @@ export default {
   .comment {
     height: 110px;
     width: 80vw;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #ccc;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 
@@ -527,7 +527,7 @@ export default {
       list-style: none;
       display: flex;
 
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.7);
       box-shadow: 0.5px 0.5px 2px 0.5px rgba(0, 0, 0, 0.5);
 
       border-radius: 10px;
