@@ -251,16 +251,16 @@ export default {
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
     console.log(this.getMovieId);
     const res = await getMovieDetails(this.getMovieId);
-    this.movie_id = res.data.slice(0, 1).movieId;
-    this.movie_name = res.data.slice(0, 1).movieName;
-    this.movie_genre = res.data.slice(0, 1).movieGenre;
-    this.movie_director = res.data.slice(0, 1).movieDirector;
-    this.movie_actor = res.data.slice(0, 1).movieActor;
-    this.movie_intro = res.data.slice(0, 1).movieIntro;
-    this.movie_img = res.data.slice(0, 1).moviePicURL;
-    this.movie_rate = res.data.slice(0, 1).movieRate;
+    this.movie_id = res.data.movie.movieId;
+    this.movie_name = res.data.movie.movieName;
+    this.movie_genre = res.data.movie.movieGenre;
+    this.movie_director = res.data.movie.movieDirector;
+    this.movie_actor = res.data.movie.movieActor;
+    this.movie_intro = res.data.movie.movieIntro;
+    this.movie_img = res.data.movie.moviePicURL;
+    this.movie_rate = res.data.movie.movieRate;
     this.movie_link = "暂无";
-    this.userComments = res.data.userComments;
+    this.userComments = res.data.commentList;
     console.log(res);
   },
   computed: {
