@@ -29,4 +29,10 @@ public class MovieController {
         else return new Result(Code.GET_ERR,"查找失败");
     }
 
+
+    @PostMapping("/pop")
+    public Result selectPop(){
+        List<Movie> movieList = movieService.moviePopService();
+        return new Result(Code.GET_OK,movieList,"查找成功");
+    }
 }

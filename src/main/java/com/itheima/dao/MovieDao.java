@@ -12,5 +12,8 @@ public interface MovieDao {
     @Select("select * from movie where movieName like concat('%',#{movieName},'%')")
     public List<Movie> searchByname(String movieName);
 
+    @Select("select * from movie order by rand() limit 10")
+    public List<Movie> searchRandom();
+
     //@Select("select")
 }

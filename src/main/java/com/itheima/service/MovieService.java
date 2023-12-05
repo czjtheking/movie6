@@ -9,4 +9,5 @@ import java.util.List;
 @Transactional
 public interface MovieService {
     public List<Movie> movieSearchService(String movieName);
+    public List<Movie> moviePopService();
 }

@@ -21,4 +21,9 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> movieSearchService(String movieName) {
         return movieDao.searchByname(movieName);
     }
+
+    @Override
+    public List<Movie> moviePopService() {
+        return movieDao.searchRandom();
+    }
 }
