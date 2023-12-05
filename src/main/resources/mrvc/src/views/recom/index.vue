@@ -83,6 +83,16 @@ export default {
           moviePicURL: 1,
           movieRate: 1,
         },
+        {
+          movieId: 1,
+          movieName: 1,
+          movieGenre: 1,
+          movieDirector: 1,
+          movieActor: 1,
+          movieIntro: 1,
+          moviePicURL: 1,
+          movieRate: 1,
+        },
       ],
     };
   },
@@ -155,7 +165,7 @@ export default {
 
     .box > span {
       font-weight: 800;
-      font-size: 45px;
+      font-size: 35px;
       font-family: "宋体";
       text-align: center;
       height: 15%;
