@@ -100,6 +100,8 @@ export default {
     width: 90vw;
     // background-color: green;
     font-size: 40px;
+    color: #2e2c2c;
+    font-weight: 800;
 
     margin: 0 auto;
   }

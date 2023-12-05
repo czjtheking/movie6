@@ -104,9 +104,9 @@ export default {
   async created() {
     const res = await getHomeData();
     console.log(res);
-    this.bannerList = res.data.bannerList; //接收三个数组存入数据
-    this.popList = res.data.popList;
-    this.recomList = res.data.recomList;
+    this.bannerList = res.data.slice(0, 5); //接收三个数组存入数据
+    this.popList = res.data.slice(5, 9);
+    this.recomList = res.data.slice(9);
   },
 };
 </script>
