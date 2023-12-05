@@ -22,29 +22,34 @@ export default {
       bannerList: [
         //这里先设置默认
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 111,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 112,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
         {
-          img: require("@/assets/test.png"),
-          movie_name: "电影名",
-          movie_id: 113,
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
+        },
+        {
+          moviePicURL: require("@/assets/test.png"),
+          movieName: "电影名",
+          movieId: 111,
         },
       ], //轮播图1
       popList: [

@@ -14,7 +14,7 @@
             referrerpolicy="no-referrer"
             @click="handleDetails(item.movieId)"
           />
-          <span class="title">{{ item.movieName }}</span>
+          <p class="title">{{ item.movieName }}</p>
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -77,8 +77,18 @@ export default {
     .title {
       position: relative;
       bottom: -300px;
-      right: -20px;
-      font-size: 30px;
+      right: 0px;
+      font-size: 25px;
+      color: #d3dce6;
+      line-height: 40px;
+      padding: 5px 0;
+      padding-right: 35px;
+      padding-left: 10px;
+      border-radius: 0 25px 25px 0;
+      background-color: rgba(65, 57, 57, 0.5);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 20px 50px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      display: inline-block;
     }
     .el-carousel__item:nth-child(2n) {
       background-color: #99a9bf;

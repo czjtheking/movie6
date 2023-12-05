@@ -3,7 +3,12 @@
     <div class="top"></div>
     <div class="title">个性推荐</div>
     <div class="main">
-      <div class="box" v-for="(item, index) in recomList" :key="index">
+      <div
+        class="box"
+        v-for="(item, index) in recomList"
+        :key="index"
+        @click="handleDetails(item.movieId)"
+      >
         <img :src="item.moviePicURL" alt="" />
         <span>{{ item.movieName }}</span>
       </div>
@@ -90,6 +95,20 @@ export default {
     this.recomList = res.data; //获取后台数据
     console.log(res);
   },
+  methods: {
+    handleDetails(id) {
+      this.$router.push(
+        {
+          path: "/moviedetails",
+          query: {
+            id: id,
+          },
+        },
+        () => {},
+        () => {}
+      );
+    },
+  },
 };
 </script>
 
@@ -135,7 +154,9 @@ export default {
     }
 
     .box > span {
-      font: 200 45px "优设标题黑";
+      font-weight: 800;
+      font-size: 45px;
+      font-family: "宋体";
       text-align: center;
       height: 15%;
       display: flex;
@@ -145,6 +166,7 @@ export default {
 
     .box:hover {
       flex-basis: 40%;
+      cursor: pointer;
     }
 
     .box:hover > img {
