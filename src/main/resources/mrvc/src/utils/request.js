@@ -10,7 +10,11 @@ const instance = axios.create({
   timeout: 5000,
 });
 
+<<<<<<< HEAD
+// let loadingInstance÷
+=======
 // let loadingInstance
+>>>>>>> da91b1bed462688ee57359e6c7285bf06f953d4a
 // 自定义配置 - 请求/响应拦截器
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {

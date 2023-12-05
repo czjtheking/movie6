@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Result;
 import com.itheima.domain.User;
 import com.itheima.service.UserService;
 import org.springframework.web.bind.annotation.*;

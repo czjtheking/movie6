@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Result;
 import com.itheima.exception.BusinessException;
 import com.itheima.exception.SystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

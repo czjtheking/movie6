@@ -2,6 +2,7 @@ package com.itheima.controller;
 
 
 import com.itheima.domain.Movie;
+import com.itheima.domain.Result;
 import com.itheima.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 

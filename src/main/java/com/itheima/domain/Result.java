@@ -1,4 +1,4 @@
-package com.itheima.controller;
+package com.itheima.domain;
 
 public class Result {
     private Object data;
