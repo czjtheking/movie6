@@ -13,6 +13,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/movies")
+@CrossOrigin
 public class CommentController {
 
 
@@ -26,9 +27,7 @@ public class CommentController {
      */
     @PostMapping("/comment")
     public Result commit(@RequestBody Comment comment){
-
         log.info("提交评论: {}", comment);
-
         commentService.commit(comment);
         return new Result(Code.GET_OK,"提交成功");
     }

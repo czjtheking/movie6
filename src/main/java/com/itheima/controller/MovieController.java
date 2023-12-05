@@ -37,5 +37,16 @@ public class MovieController {
         return new Result(Code.GET_OK,movieList,"查找成功");
     }
 
+    @PostMapping("/main")
+    public Result giveMain(){
+        List<Movie> movieList = movieService.movieMainService();
+        List<Movie> movieList2 = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            movieList.add(new Movie());
+        }
+        movieList.addAll(movieList2);
+        return new Result(Code.GET_OK,movieList,"成功");
+    }
+
 
 }
