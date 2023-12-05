@@ -260,7 +260,7 @@ export default {
     this.movie_img = res.data.movie.moviePicURL;
     this.movie_rate = res.data.movie.movieRate;
     this.movie_link = "暂无";
-    this.userComments = res.data.userComments;
+    this.userComments = res.data.commentList;
     console.log(res);
   },
   computed: {

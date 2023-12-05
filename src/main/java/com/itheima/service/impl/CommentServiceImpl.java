@@ -28,13 +28,11 @@ public class CommentServiceImpl implements CommentService {
         CommentMapper.deletecomment(comment);
     }
 
-    @Override
-    public Movie query1(Movie movie) {
-        return CommentMapper.query1(movie);
+    public Movie query1(Integer movieId) {
+        return CommentMapper.query1(movieId);
     }
 
-    @Override
-    public List<Comment> query2(Movie movie) {
-        return CommentMapper.query2(movie);
+    public List<Comment> query2(Integer movieId) {
+        return CommentMapper.query2(movieId);
     }
 }

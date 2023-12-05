@@ -25,5 +25,7 @@ public interface MovieDao {
     @Insert("insert into movie (movieName,movieGenre,movieDirector,movieActor,movieIntro,moviePicURL) values (#{movieName},#{movieGenre},#{movieDirector},#{movieActor},#{movieIntro},#{moviePicURL})")
     public void addMovie(Movie movie);
 
+
+
     //@Select("select")
 }
