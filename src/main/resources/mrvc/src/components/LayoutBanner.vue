@@ -6,14 +6,15 @@
       <el-carousel :interval="4000" type="card" height="380px">
         <el-carousel-item v-for="(item, index) in list" :key="index">
           <img
-            :src="item.img"
+            :src="item.moviePicURL"
             alt=""
             class="main-pic"
             width="100%"
             height="100%"
-            @click="handleDetails(item.movie_id)"
+            referrerpolicy="no-referrer"
+            @click="handleDetails(item.movieId)"
           />
-          <span class="title">{{ item.movie_name }}</span>
+          <span class="title">{{ item.movieName }}</span>
         </el-carousel-item>
       </el-carousel>
     </div>
