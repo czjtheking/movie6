@@ -33,35 +33,6 @@ export default {
     return {
       recomList: [
         //这里设置默认后面改
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          genre: "类别",
-          movie_intro:
-            "这是一段电影简介这是一段电影简介这是一段电影简介这是一段电影简介这是一段电影简介这是一段电影简介这是一段电影简介",
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          genre: "类别",
-          movie_intro: "这是一段电影简介",
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          genre: "类别",
-          movie_intro: "这是一段电影简介",
-        },
-        {
-          img: require("@/assets/test2.jpg"),
-          movie_name: "电影名",
-          actor: "主演",
-          genre: "类别",
-          movie_intro: "这是一段电影简介",
-        },
       ],
     };
   },

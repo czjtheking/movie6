@@ -39,7 +39,11 @@ export default {
       } else {
         const res = await codeRegister(this.account, this.password);
         console.log(res);
-        this.$message.success("注册成功，请登录");
+        this.$message.success({
+          message: "注册成功",
+          duration: 1000,
+          offset: 75,
+        });
         this.$router.push("/mainlogin");
       }
     },
