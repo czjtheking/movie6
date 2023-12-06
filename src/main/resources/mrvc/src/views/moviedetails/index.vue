@@ -153,7 +153,7 @@ export default {
         duration: 1000,
         offset: 75,
       });
-      console.log(res);
+      //console.log();
     },
     setFocus() {
       this.$refs.textRef.classList.remove("text1");

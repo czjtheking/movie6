@@ -114,7 +114,7 @@ import store from "@/store";
 import {
   newComment,
   storeMovie,
-  rateMovie,
+  // rateMovie,
   getMovieDetails,
   deleteComments,
 } from "@/api/movieDetails";
@@ -143,18 +143,17 @@ export default {
   },
   methods: {
     async setRate() {
-      //提交评分
-      const res = await rateMovie(
-        store.getters.getUserId,
-        this.movie_id,
-        this.rateNum
-      );
+      // const res = await rateMovie(
+      //   store.getters.getUserId,
+      //   this.movie_id,
+      //   this.rateNum
+      // );
       this.$message.success({
         message: "评分成功",
         duration: 1000,
         offset: 75,
       });
-      console.log(res);
+      //console.log();
     },
     setFocus() {
       this.$refs.textRef.classList.remove("text1");
