@@ -14,7 +14,7 @@ export const newComment = (userId, movieId, userName, context, date) => {
 
 //提交收藏
 export const storeMovie = (userId, movieId) => {
-  return request.post("/movies/store", {
+  return request.post("/store/commit", {
     userId,
     movieId,
   })
