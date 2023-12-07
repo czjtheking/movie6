@@ -48,8 +48,8 @@ public class CommentController {
     @PostMapping("/details")
     public Result query(@RequestBody Movie movie){
         log.info("电影请求: {}",movie);
-        Movie movie1 = commentService.query1(movie);
-        List<Comment> commentList = commentService.query2(movie);
+        Movie movie1 = commentService.query1(movie.getMovieId());
+        List<Comment> commentList = commentService.query2(movie.getMovieId());
         Details details = new Details(movie1,commentList);
         return new Result(Code.GET_OK, details ,"删除成功");
     }

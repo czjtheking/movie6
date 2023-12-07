@@ -21,11 +21,11 @@ public interface CommentService {
     /**
      * 电影请求1
      */
-    Movie query1(Movie movie);
+    Movie query1(Integer movieId);
 
     /**
      * 电影请求2
      * @return
      */
-    List<Comment> query2(Movie movie);
+    List<Comment> query2(Integer movieId);
 }

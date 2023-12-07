@@ -153,7 +153,7 @@ export default {
         duration: 1000,
         offset: 75,
       });
-      console.log(res);
+      //console.log();
     },
     setFocus() {
       this.$refs.textRef.classList.remove("text1");
@@ -186,8 +186,8 @@ export default {
         console.log(obj);
         const res = await newComment(
           Number(obj.user_id),
-          Number(obj.movie_id),
-          obj.user_name,
+            Number(obj.movie_id),
+            obj.user_name,
           obj.context,
           obj.date
         );
