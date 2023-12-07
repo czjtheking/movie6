@@ -1,6 +1,6 @@
 package com.itheima.controller;
 import com.itheima.domain.Comment;
-import com.itheima.domain.Details;
+import com.itheima.domain.commetDtails;
 import com.itheima.domain.Movie;
 import com.itheima.domain.Result;
 import com.itheima.service.CommentService;
@@ -50,7 +50,7 @@ public class CommentController {
         log.info("电影请求: {}",movie);
         Movie movie1 = commentService.query1(movie.getMovieId());
         List<Comment> commentList = commentService.query2(movie.getMovieId());
-        Details details = new Details(movie1,commentList);
-        return new Result(Code.GET_OK, details ,"删除成功");
+        commetDtails commetDtails = new commetDtails(movie1,commentList);
+        return new Result(Code.GET_OK, commetDtails,"删除成功");
     }
 }

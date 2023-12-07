@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-details">
+  <div class="movie-commetDtails">
     <div
       class="bgi"
       :style="{
@@ -256,7 +256,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-.movie-details {
+.movie-commetDtails {
   width: 99vw;
   color: #2e2c2c;
 
