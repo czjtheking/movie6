@@ -127,11 +127,11 @@ export default {
       nowCommentId: 0,
       idAdmin: false,
       movie_id: 123,
-      movie_name: "孤注一掷",
-      movie_genre: "悬疑",
-      movie_director: "导演",
-      movie_actor: "张艺兴/王传君",
-      movie_intro: "这是一段简介这是一段简介这是一段简介这是一段简介",
+      movie_name: "",
+      movie_genre: "",
+      movie_director: "",
+      movie_actor: "",
+      movie_intro: "",
       movie_img: require("@/assets/test2.jpg"),
       movie_rate: 8.5,
       movie_link: "暂无",
@@ -186,8 +186,8 @@ export default {
         console.log(obj);
         const res = await newComment(
           Number(obj.user_id),
-            Number(obj.movie_id),
-            obj.user_name,
+          Number(obj.movie_id),
+          obj.user_name,
           obj.context,
           obj.date
         );
