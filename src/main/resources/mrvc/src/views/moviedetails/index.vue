@@ -10,7 +10,7 @@
     <div class="top"></div>
     <div class="title"></div>
     <div class="main">
-      <div class="pic"><img :src="movie_img" alt="" /></div>
+      <div class="pic"><img :src="movie_img" alt="" referrerpolicy="no-referrer" /></div>
       <div class="text">
         <div class="movie-title">{{ movie_name }}</div>
         <div class="movie-genre">{{ movie_genre }}</div>
