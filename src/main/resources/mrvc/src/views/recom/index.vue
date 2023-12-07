@@ -90,6 +90,7 @@ export default {
     // PopularMovie,
   },
   async created() {
+    this.$store.commit("info/setInfoMark", 1);
     const res = await getRecomData(store.getters.getUserId);
 
     this.recomList = res.data; //获取后台数据

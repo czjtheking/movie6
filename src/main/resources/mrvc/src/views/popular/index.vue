@@ -38,6 +38,7 @@ export default {
     PopularMovie,
   },
   async created() {
+    this.$store.commit("info/setInfoMark", 1);
     const res = await getPopData();
 
     this.popList = res.data; //获取后台数据

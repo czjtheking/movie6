@@ -10,7 +10,9 @@
     <div class="top"></div>
     <div class="title"></div>
     <div class="main">
-      <div class="pic"><img :src="movie_img" alt="" /></div>
+      <div class="pic">
+        <img :src="movie_img" alt="" referrerpolicy="no-referrer" />
+      </div>
       <div class="text">
         <div class="movie-title">{{ movie_name }}</div>
         <div class="movie-genre">{{ movie_genre }}</div>
@@ -235,6 +237,7 @@ export default {
   },
   async created() {
     this.isAdmin = store.getters.getAuth;
+    this.$store.commit("info/setInfoMark", 1);
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
     console.log(Number(this.getMovieId));
     const res = await getMovieDetails(Number(this.getMovieId));
