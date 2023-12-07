@@ -199,7 +199,10 @@ export default {
     },
     async handleStore() {
       //用户点击收藏，提交收藏请求
-      const res = await storeMovie(store.getters.getUserId, this.movie_id);
+      const res = await storeMovie(
+        Number(store.getters.getUserId),
+        Number(this.movie_id)
+      );
       this.$message.success({
         message: "收藏成功",
         duration: 1000,
