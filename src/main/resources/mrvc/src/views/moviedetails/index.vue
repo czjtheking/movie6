@@ -204,7 +204,10 @@ export default {
     async handleStore() {
       //用户点击收藏，提交收藏请求
       if (this.storeMark) {
+
+        console.log(store.getters.getUserId,this.movie_id)
         const res = await cancelStore(
+
           Number(store.getters.getUserId),
           Number(this.movie_id)
         );

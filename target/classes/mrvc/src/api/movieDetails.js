@@ -44,3 +44,11 @@ export const deleteComments = (commentId) => {
   })
 }
 
+//取消收藏
+export const cancelStore = (userId, movieId) => {
+  return request.post('/store/delstore2', {
+    userId,
+    movieId
+  })
+}
+

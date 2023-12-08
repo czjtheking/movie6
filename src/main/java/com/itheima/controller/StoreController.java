@@ -52,6 +52,7 @@ public class StoreController {
     @PostMapping("/delstore2")
     public Result deleteStore2(@RequestBody Store store)
     {
+        System.out.println(store);
         boolean temp = storeService.delStoreBypage(store.getUserId(),store.getMovieId());
         Integer code = temp ?Code.GET_OK:Code.GET_ERR;
         String msg = temp ?"取消收藏成功":"取消收藏失败";

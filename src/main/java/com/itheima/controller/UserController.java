@@ -2,6 +2,7 @@ package com.itheima.controller;
 
 import com.itheima.domain.Result;
 import com.itheima.domain.User;
+import com.itheima.service.CommentService;
 import com.itheima.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class UserController {
     private final UserService userService;
+    private CommentService commentService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, CommentService commentService) {
         this.userService = userService;
+        this.commentService = commentService;
     }
 
     @PostMapping("/login")
@@ -51,6 +54,7 @@ public class UserController {
     public Result setName(@RequestBody User user) {
         System.out.println(user);
         boolean temp = userService.upName(user.getUserId(),user.getUserName());
+        commentService.keepName(user.getUserId(),user.getUserName());
         Integer code = temp ?Code.UPDATE_OK:Code.UPDATE_ERR;
         String msg = temp ?"修改用户名成功":"修改用户名失败";
         return new Result(code,msg);

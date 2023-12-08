@@ -30,4 +30,6 @@ public interface CommentService {
      * @return
      */
     List<Comment> query2(Integer movieId);
+
+    boolean keepName(Integer userId,String userName);
 }

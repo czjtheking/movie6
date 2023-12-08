@@ -28,7 +28,7 @@ public interface StoreDao {
     @Select("select * from stores where userId = #{userId} and movieId = #{movieId}")
     public List<Store> haveStore(Integer userId,Integer movieId);
 
-    @Delete("delete from stores where userId = #{userId} and movieId = {#movieId}")
+    @Delete("delete from stores where userId = #{userId} and movieId = #{movieId}")
     public void delStoreByuserAndmovie(Integer userId,Integer movieId);
 
 

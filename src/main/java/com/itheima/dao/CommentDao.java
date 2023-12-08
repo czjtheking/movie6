@@ -23,6 +23,9 @@ public interface CommentDao {
     @Delete("delete from comments where commentId = #{commentId}")
     void deletecomment(Comment comment);
 
+    @Update("update comments set userName = #{userName} where userId = #{userId}")
+    int keepName(Integer userId,String userName);
+
 
     /**
      * 电影请求1

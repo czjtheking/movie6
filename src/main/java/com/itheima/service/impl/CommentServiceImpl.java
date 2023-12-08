@@ -37,4 +37,9 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> query2(Integer movieId) {
         return CommentMapper.query2(movieId);
     }
+
+    @Override
+    public boolean keepName(Integer userId, String userName) {
+        return CommentMapper.keepName(userId,userName)>0;
+    }
 }
