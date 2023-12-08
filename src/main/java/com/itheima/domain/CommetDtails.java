@@ -5,8 +5,8 @@ import java.util.List;
 public class CommetDtails {
     private Movie movie;
     private List<Comment> commentList;
-    private double rateNum;
-    boolean storeMark;
+    private double rateNum = 0;
+    boolean storeMark = false;
 
     public boolean isStoreMark() {
         return storeMark;

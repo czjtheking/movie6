@@ -18,8 +18,8 @@ public interface RateDao {
     @Select("select * from rate where userId = #{userId} and movieId = #{movieId}")
     public List<Rate> isRepeat(Integer userId,Integer movieId);
 
-    @Select("select rateNum from rate where userId = #{userId} and movieId = #{movieId}")
-    public double findRateNum(Integer userId,Integer movieId);
+    @Select("select * from rate where userId = #{userId} and movieId = #{movieId}")
+    public Rate findRateNum(Integer userId,Integer movieId);
 
     @Update("update rate set rateNum = #{rateNum} where userId = #{userId} and movieId = #{movieId}")
     public int updateRate(double rateNum,Integer userId,Integer movieId);

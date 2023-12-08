@@ -34,7 +34,11 @@ public class RateServiceImpl implements RateService {
 
     @Override
     public double getRate(Rate rate) {
-        double rateNum = rateDao.findRateNum(rate.getUserId(),rate.getMovieId());
-        return rateNum;
+        Rate rate1 = rateDao.findRateNum(rate.getUserId(),rate.getMovieId());
+        if (rate1==null)
+        {
+            return 0;
+        }
+        else return rate1.getRateNum();
     }
 }

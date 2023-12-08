@@ -63,8 +63,8 @@ public class CommentController {
         double rateNum = rateService.getRate(rate);
         boolean storeMark = storeService.isStore(rate.getUserId(),rate.getMovieId());
         CommetDtails commetDtails = new CommetDtails(movie1,rateNum,storeMark,commentList);
-        Integer code = commetDtails !=null?Code.GET_OK:Code.GET_ERR;
-        String msg = commetDtails !=null?"提交电影详情页成功":"提交电影详情页失败";
+        Integer code = Code.GET_OK;
+        String msg = "提交电影详情页成功";
         return new Result(code, commetDtails,msg);
     }
 }
