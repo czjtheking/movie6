@@ -40,7 +40,6 @@
         class="store-button"
         @click="handleStore"
       ></el-button> -->
-      <StoreIcon></StoreIcon>
       <i
         class="el-icon-star-on store-button"
         ref="starRef"
@@ -272,10 +271,12 @@ export default {
 
     this.rateNum = res.data.rateNum; //用户评分
     this.storeMark = res.data.storeMark; //标记收藏
+    console.log('this:',this.storeMark)
 
     console.log(res);
   },
   mounted() {
+    console.log('dayin:',this.storeMark)
     if (this.storeMark === true) {
       this.$refs.storeTextRef.innerText = "已收藏";
       this.$refs.starRef.classList.add("setcolor");
