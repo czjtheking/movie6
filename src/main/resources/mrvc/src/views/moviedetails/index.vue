@@ -31,10 +31,11 @@
       </div>
     </div>
     <div class="store">
-      <span ref="storeTextRef">点击收藏</span>
+      <span ref="storeTextRef" id="storeText">点击收藏</span>
       <i
         class="el-icon-star-on store-button"
         ref="starRef"
+        id="storeIcon"
         @click="handleStore"
       ></i>
     </div>
@@ -278,15 +279,13 @@ export default {
 
     this.rateNum = res.data.rateNum; //用户评分
     this.storeMark = res.data.storeMark; //标记收藏
-
+    if (this.storeMark === true) {
+      document.querySelector("#storeText").innerText = "已收藏";
+      document.querySelector("#storeIcon").classList.add("setcolor");
+    }
     console.log(res);
   },
-  mounted() {
-    if (this.storeMark === true) {
-      this.$refs.storeTextRef.innerText = "已收藏";
-      this.$refs.starRef.classList.add("setcolor");
-    }
-  },
+
   computed: {
     getMovieId() {
       return this.$route.query.id;
