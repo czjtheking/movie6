@@ -183,7 +183,7 @@ export default {
         const obj = {
           user_id: store.getters.getUserId,
           movie_id: this.movie_id,
-          user_name: store.getters.getUserName,
+          userName: store.getters.getUserName,
           context: this.$refs.textRef.value,
           date: new Date().toLocaleString(),
         };
@@ -191,7 +191,7 @@ export default {
         const res = await newComment(
           Number(obj.user_id),
           Number(obj.movie_id),
-          obj.user_name,
+          obj.userName,
           obj.context,
           obj.date
         );
