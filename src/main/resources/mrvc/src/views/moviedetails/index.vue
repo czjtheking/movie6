@@ -32,15 +32,6 @@
     </div>
     <div class="store">
       <span ref="storeTextRef">点击收藏</span>
-      <!-- 点击收藏<el-button
-        type="warning"
-        plain
-        icon="el-icon-star-on"
-        circle
-        class="store-button"
-        @click="handleStore"
-      ></el-button> -->
-      <StoreIcon></StoreIcon>
       <i
         class="el-icon-star-on store-button"
         ref="starRef"
@@ -126,6 +117,7 @@ import {
   getMovieDetails,
   deleteComments,
   rateMovie,
+  cancelStore,
 } from "@/api/movieDetails";
 
 export default {
@@ -210,21 +202,33 @@ export default {
     },
     async handleStore() {
       //用户点击收藏，提交收藏请求
-
-      this.$refs.starRef.classList.add("setcolor");
-      this.$refs.storeTextRef.innerText = "已收藏";
-
-      const res = await storeMovie(
-        Number(store.getters.getUserId),
-        Number(this.movie_id)
-      );
-      this.$message.success({
-        message: "收藏成功",
-        duration: 1000,
-        offset: 75,
-      });
-
-      console.log(res);
+      if (this.storeMark) {
+        const res = await cancelStore(
+          Number(store.getters.getUserId),
+          Number(this.movie_id)
+        );
+        this.$refs.starRef.classList.remove("setcolor");
+        this.$refs.storeTextRef.innerText = "点击收藏";
+        this.$message.success({
+          message: "取消成功",
+          duration: 1000,
+          offset: 75,
+        });
+        console.log(res);
+      } else {
+        const res = await storeMovie(
+          Number(store.getters.getUserId),
+          Number(this.movie_id)
+        );
+        this.$refs.starRef.classList.add("setcolor");
+        this.$refs.storeTextRef.innerText = "已收藏";
+        this.$message.success({
+          message: "收藏成功",
+          duration: 1000,
+          offset: 75,
+        });
+        console.log(res);
+      }
     },
     deleteComment(id) {
       this.dialogVisible = true;
@@ -387,10 +391,11 @@ export default {
       color: #9c9999;
       font-size: 45px;
       margin: 0 10px;
+      transition: 0.3s;
     }
     .store-button:hover {
       cursor: pointer;
-      color: rgb(247, 186, 42);
+      color: rgb(240, 205, 124);
     }
     .setcolor {
       color: rgb(247, 186, 42);
