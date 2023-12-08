@@ -31,14 +31,21 @@
       </div>
     </div>
     <div class="store">
-      点击收藏<el-button
+      <span ref="storeTextRef">点击收藏</span>
+      <!-- 点击收藏<el-button
         type="warning"
         plain
-        icon="el-icon-star-off"
+        icon="el-icon-star-on"
         circle
         class="store-button"
         @click="handleStore"
-      ></el-button>
+      ></el-button> -->
+      <StoreIcon></StoreIcon>
+      <i
+        class="el-icon-star-on store-button"
+        ref="starRef"
+        @click="handleStore"
+      ></i>
     </div>
     <div class="link">
       <div class="link-title">播放链接</div>
@@ -116,13 +123,14 @@ import store from "@/store";
 import {
   newComment,
   storeMovie,
-  // rateMovie,
   getMovieDetails,
   deleteComments,
+  rateMovie,
 } from "@/api/movieDetails";
 
 export default {
   name: "MoviedetailsIndex",
+  components: {},
   data() {
     return {
       dialogVisible: false,
@@ -138,6 +146,7 @@ export default {
       movie_rate: 8.5,
       movie_link: "暂无",
       rateNum: 0,
+      storeMark: false,
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
       userComments: [],
@@ -145,17 +154,17 @@ export default {
   },
   methods: {
     async setRate() {
-      // const res = await rateMovie(
-      //   store.getters.getUserId,
-      //   this.movie_id,
-      //   this.rateNum
-      // );
+      const res = await rateMovie(
+        store.getters.getUserId,
+        this.movie_id,
+        this.rateNum
+      );
       this.$message.success({
         message: "评分成功",
         duration: 1000,
         offset: 75,
       });
-      //console.log();
+      console.log(res);
     },
     setFocus() {
       this.$refs.textRef.classList.remove("text1");
@@ -201,6 +210,10 @@ export default {
     },
     async handleStore() {
       //用户点击收藏，提交收藏请求
+
+      this.$refs.starRef.classList.add("setcolor");
+      this.$refs.storeTextRef.innerText = "已收藏";
+
       const res = await storeMovie(
         Number(store.getters.getUserId),
         Number(this.movie_id)
@@ -210,6 +223,7 @@ export default {
         duration: 1000,
         offset: 75,
       });
+
       console.log(res);
     },
     deleteComment(id) {
@@ -240,7 +254,10 @@ export default {
     this.$store.commit("info/setInfoMark", 1);
     //进入电影详情页，根据movie_id请求电影和评论数据，进行渲染
     console.log(Number(this.getMovieId));
-    const res = await getMovieDetails(Number(this.getMovieId));
+    const res = await getMovieDetails(
+      Number(store.getters.getUserId),
+      Number(this.getMovieId)
+    );
     this.movie_id = res.data.movie.movieId;
     this.movie_name = res.data.movie.movieName;
     this.movie_genre = res.data.movie.movieGenre;
@@ -250,8 +267,19 @@ export default {
     this.movie_img = res.data.movie.moviePicURL;
     this.movie_rate = res.data.movie.movieRate;
     this.movie_link = "暂无";
+
     this.userComments = res.data.commentList;
+
+    this.rateNum = res.data.rateNum; //用户评分
+    this.storeMark = res.data.storeMark; //标记收藏
+
     console.log(res);
+  },
+  mounted() {
+    if (this.storeMark === true) {
+      this.$refs.storeTextRef.innerText = "已收藏";
+      this.$refs.starRef.classList.add("setcolor");
+    }
   },
   computed: {
     getMovieId() {
@@ -354,7 +382,18 @@ export default {
     align-items: center;
     justify-content: right;
     .store-button {
+      background: rgba(255, 255, 255, 0);
+      border-color: rgba(255, 255, 255, 0);
+      color: #9c9999;
+      font-size: 45px;
       margin: 0 10px;
+    }
+    .store-button:hover {
+      cursor: pointer;
+      color: rgb(247, 186, 42);
+    }
+    .setcolor {
+      color: rgb(247, 186, 42);
     }
   }
   .link {
