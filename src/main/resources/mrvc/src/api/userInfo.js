@@ -12,7 +12,7 @@ export const getUserData = (userId) => {
 
 export const updateUserName = (userId, userName) => {
   console.log(userId, userName);
-  return request.post('/users/setName', {
+  return request.put('/users/setname', {
     userId,
     userName,
   })
@@ -22,7 +22,7 @@ export const updateUserName = (userId, userName) => {
 
 export const updateUserPassword = (userId, userPsw) => {
   console.log(userId, userPsw);
-  return request.post('/users/setPsw', {
+  return request.put('/users/setpsw', {
     userId,
     userPsw,
   })

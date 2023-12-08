@@ -1,9 +1,8 @@
 package com.itheima.controller;
-import com.itheima.domain.Comment;
-import com.itheima.domain.CommetDtails;
-import com.itheima.domain.Movie;
-import com.itheima.domain.Result;
+import com.itheima.domain.*;
 import com.itheima.service.CommentService;
+import com.itheima.service.RateService;
+import com.itheima.service.StoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +18,13 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+    private RateService rateService;
+    private StoreService storeService;
+
+    public CommentController(RateService rateService, StoreService storeService) {
+        this.rateService = rateService;
+        this.storeService = storeService;
+    }
 
 
     /**
@@ -50,13 +56,15 @@ public class CommentController {
      * 电影请求
      */
     @PostMapping("/details")
-    public Result query(@RequestBody Movie movie){
-        log.info("电影请求: {}",movie);
-        Movie movie1 = commentService.query1(movie.getMovieId());
-        List<Comment> commentList = commentService.query2(movie.getMovieId());
-        CommetDtails commetDtails = new CommetDtails(movie1,commentList);
+    public Result query(@RequestBody Rate rate){
+        log.info("电影请求: {}",rate);
+        Movie movie1 = commentService.query1(rate.getMovieId());
+        List<Comment> commentList = commentService.query2(rate.getMovieId());
+        double rateNum = rateService.getRate(rate);
+        boolean storeMark = storeService.isStore(rate.getUserId(),rate.getMovieId());
+        CommetDtails commetDtails = new CommetDtails(movie1,rateNum,storeMark,commentList);
         Integer code = commetDtails !=null?Code.GET_OK:Code.GET_ERR;
-        String msg = commetDtails !=null?"删除成功":"删除失败";
+        String msg = commetDtails !=null?"提交电影详情页成功":"提交电影详情页失败";
         return new Result(code, commetDtails,msg);
     }
 }

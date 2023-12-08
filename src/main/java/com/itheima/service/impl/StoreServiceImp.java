@@ -33,9 +33,16 @@ public class StoreServiceImp implements StoreService {
     }
 
     @Override
-    public boolean saveStoreService(Integer userId, Integer movieId) {
-        storeDao.saveStore(userId,movieId);
-        return true;
+    public boolean saveStoreService(Store store) {
+        List<Store> storeList = storeDao.isRepeat(store);
+        if (storeList.size()==0)
+        {
+            storeDao.saveStore(store);
+            return true;
+        }
+        else return false;
+
+
     }
 
     @Override
@@ -62,4 +69,16 @@ public class StoreServiceImp implements StoreService {
         storeDao.delStoreByuserAndmovie(userId,movieId);
         return true;
     }
+
+    @Override
+    public boolean isStore(Integer userId,Integer movieId) {
+        List<Store> storeList = storeDao.haveStore(userId,movieId);
+        if (storeList.size()==0)
+        {
+            return false;
+        }
+        else return true;
+    }
+
+
 }

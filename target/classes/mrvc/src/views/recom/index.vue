@@ -43,7 +43,6 @@ export default {
     return {
       recomList: [
         //这里设置默认后面改
-<<<<<<< HEAD
         {
           movieId: 1,
           movieName: "电影名",
@@ -84,18 +83,6 @@ export default {
           moviePicURL: 1,
           movieRate: 1,
         },
-        {
-          movieId: 1,
-          movieName: 1,
-          movieGenre: 1,
-          movieDirector: 1,
-          movieActor: 1,
-          movieIntro: 1,
-          moviePicURL: 1,
-          movieRate: 1,
-        },
-=======
->>>>>>> 2889f087f9a19bf76b610a71594a2819fce66368
       ],
     };
   },
@@ -103,6 +90,7 @@ export default {
     // PopularMovie,
   },
   async created() {
+    this.$store.commit("info/setInfoMark", 1);
     const res = await getRecomData(store.getters.getUserId);
 
     this.recomList = res.data; //获取后台数据
@@ -143,10 +131,10 @@ export default {
   }
   .main {
     // height: 1100px;
-    width: 90vw;
+    width: 70vw;
     // background-color: yellow;
-    margin: 0 auto;
-    height: 700px;
+    margin: 60px auto;
+    height: 600px;
     display: flex;
     .box {
       flex: 1;
@@ -178,7 +166,7 @@ export default {
     }
 
     .box:hover {
-      flex-basis: 40%;
+      flex-basis: 20%;
       cursor: pointer;
     }
 

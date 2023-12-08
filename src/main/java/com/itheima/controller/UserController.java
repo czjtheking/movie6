@@ -49,6 +49,7 @@ public class UserController {
 
     @PutMapping  ("/setname")
     public Result setName(@RequestBody User user) {
+        System.out.println(user);
         boolean temp = userService.upName(user.getUserId(),user.getUserName());
         Integer code = temp ?Code.UPDATE_OK:Code.UPDATE_ERR;
         String msg = temp ?"修改用户名成功":"修改用户名失败";

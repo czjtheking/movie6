@@ -5,25 +5,48 @@ import java.util.List;
 public class CommetDtails {
     private Movie movie;
     private List<Comment> commentList;
+    private double rateNum;
+    boolean storeMark;
 
-    public CommetDtails(Movie movie, List<Comment> commentList) {
+    public boolean isStoreMark() {
+        return storeMark;
+    }
+
+    public CommetDtails(Movie movie, double rateNum, boolean storeMark,List<Comment> commentList) {
         this.movie = movie;
         this.commentList = commentList;
+        this.rateNum = rateNum;
+        this.storeMark = storeMark;
     }
+
+    @Override
+    public String toString() {
+        return "CommetDtails{" +
+                "movie=" + movie +
+                ", commentList=" + commentList +
+                ", rateNum=" + rateNum +
+                ", storeMark=" + storeMark +
+                '}';
+    }
+
+    public void setStoreMark(boolean storeMark) {
+        this.storeMark = storeMark;
+    }
+
+    public double getRateNum() {
+        return rateNum;
+    }
+
+    public void setRateNum(double rateNum) {
+        this.rateNum = rateNum;
+    }
+
 
     public CommetDtails() {
     }
 
     public Movie getMovie() {
         return movie;
-    }
-
-    @Override
-    public String toString() {
-        return "Details{" +
-                "movie=" + movie +
-                ", commentList=" + commentList +
-                '}';
     }
 
     public void setMovie(Movie movie) {

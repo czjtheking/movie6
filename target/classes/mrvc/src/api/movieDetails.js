@@ -30,8 +30,9 @@ export const rateMovie = (userId, movieId, rateNum) => {
 }
 
 // 请求电影信息
-export const getMovieDetails = (movieId) => {
+export const getMovieDetails = (userId, movieId) => {
   return request.post("/movies/details", {
+    userId,
     movieId,
   })
 }
@@ -42,3 +43,4 @@ export const deleteComments = (commentId) => {
     commentId
   })
 }
+

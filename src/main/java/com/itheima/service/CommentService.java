@@ -2,9 +2,11 @@ package com.itheima.service;
 
 import com.itheima.domain.Comment;
 import com.itheima.domain.Movie;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public interface CommentService {
     /**
      * 提交评论

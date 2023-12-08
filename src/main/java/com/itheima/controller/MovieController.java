@@ -64,6 +64,7 @@ public class MovieController {
 
     @PostMapping("/rate")
     public Result movieRate(@RequestBody Rate rate){
+        System.out.println(rate);
         boolean temp =  rateService.saveRateService(rate);
         Integer code = temp ?Code.GET_OK:Code.GET_ERR;
         String msg = temp ?"评分成功":"评分失败";
