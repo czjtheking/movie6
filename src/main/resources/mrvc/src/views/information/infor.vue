@@ -81,6 +81,11 @@ export default {
     async updateName() {
       //点击请求修改昵称
       const res = await updateUserName(Number(this.uid), this.uname);
+      this.$store.commit("user/setUserInfo", {
+        userId: store.getters.getUserId,
+        isAdmin: store.getters.getAuth,
+        userName: this.uname,
+      }); //提交userInfo存储
       this.isShowEditUname = false;
       this.$message.success("修改成功");
       console.log(res);
