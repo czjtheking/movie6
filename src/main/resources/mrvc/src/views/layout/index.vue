@@ -52,6 +52,7 @@ export default {
     };
   },
   async created() {
+    this.$store.commit("info/setInfoMark", 1);
     const res = await getHomeData();
     console.log(res);
     // this.bannerList = res.data.slice(0, 5); //接收三个数组存入数据
