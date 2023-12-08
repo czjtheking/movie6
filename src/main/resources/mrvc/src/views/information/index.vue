@@ -38,6 +38,7 @@ export default {
     console.log(this.mark);
   },
   mounted() {
+    console.log(this.mark);
     if (this.mark === 1) {
       console.log(111);
       this.$refs.opt2.classList.remove("to-big");

@@ -4,7 +4,7 @@ import request from '@/utils/request'
 
 export const getSearchData = (movieName) => {
   console.log(movieName);
-  return request.get('/movies/search', {
+  return request.post('/movies/search', {
     movieName,
   })
 }
