@@ -86,7 +86,7 @@ export default {
   },
   async created() {
     this.uid = store.getters.getUserId; //创建页面时，拿取uid然后发起请求获取收藏信息
-    const res = await getStoreData(store.getters.getUserId);
+    const res = await getStoreData(Number(store.getters.getUserId));
     this.storeList = res.data;
     console.log(res);
   },
