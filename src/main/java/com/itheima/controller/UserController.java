@@ -49,14 +49,18 @@ public class UserController {
 
     @PutMapping  ("/setname")
     public Result setName(@RequestBody User user) {
-        userService.upName(user.getUserId(),user.getUserName());
-        return new Result(Code.UPDATE_OK,"修改用户名成功");
+        boolean temp = userService.upName(user.getUserId(),user.getUserName());
+        Integer code = temp ?Code.UPDATE_OK:Code.UPDATE_ERR;
+        String msg = temp ?"修改用户名成功":"修改用户名失败";
+        return new Result(code,msg);
     }
 
     @PutMapping("/setpsw")
     public Result setPsw(@RequestBody User user){
-        userService.upPsw(user.getUserId(),user.getUserPsw());
-        return new Result(Code.UPDATE_OK,"修改密码成功");
+        boolean temp = userService.upPsw(user.getUserId(),user.getUserPsw());
+        Integer code = temp ?Code.UPDATE_OK:Code.UPDATE_ERR;
+        String msg = temp ?"修改密码成功":"修改密码失败";
+        return new Result(code,msg);
     }
 
 

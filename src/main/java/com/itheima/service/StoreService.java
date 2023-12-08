@@ -1,13 +1,14 @@
 package com.itheima.service;
 
 import com.itheima.domain.Store;
-import com.itheima.domain.storeDetails;
+import com.itheima.domain.StoreDetails;
 
 import java.util.List;
 
 public interface StoreService {
-    public List<Store> getAllStore(Integer userId);
-    public void saveStore(Integer userId,Integer movieId);
-    public void deleteStore(Integer storeId);
-    public List<storeDetails> getAllStoreReturn(Integer userId);
+    List<Store> getAllStore(Integer userId);
+    boolean saveStoreService(Integer userId, Integer movieId);
+    boolean deleteStoreService(Integer storeId);
+    List<StoreDetails> getAllStoreReturn(Integer userId);
+    boolean delStoreBypage(Integer userId, Integer movieId);
 }

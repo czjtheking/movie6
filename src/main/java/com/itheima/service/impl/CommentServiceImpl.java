@@ -19,13 +19,15 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    public void commit(Comment comment) {
+    public boolean commit(Comment comment) {
         CommentMapper.saveComment(comment);
+        return true;
     }
 
     @Override
-    public void deletecomment(Comment comment) {
+    public boolean deletecomment(Comment comment) {
         CommentMapper.deletecomment(comment);
+        return true;
     }
 
     public Movie query1(Integer movieId) {

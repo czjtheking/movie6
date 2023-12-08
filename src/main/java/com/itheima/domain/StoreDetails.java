@@ -2,12 +2,12 @@ package com.itheima.domain;
 
 import java.util.List;
 
-public class storeDetails {
+public class StoreDetails {
     private Integer storeId;
     private Integer userId;
     private Movie movie;
 
-    public storeDetails(Integer storeId, Integer userId, Movie movie) {
+    public StoreDetails(Integer storeId, Integer userId, Movie movie) {
         this.storeId = storeId;
         this.userId = userId;
         this.movie = movie;

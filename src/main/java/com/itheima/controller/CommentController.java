@@ -1,6 +1,6 @@
 package com.itheima.controller;
 import com.itheima.domain.Comment;
-import com.itheima.domain.commetDtails;
+import com.itheima.domain.CommetDtails;
 import com.itheima.domain.Movie;
 import com.itheima.domain.Result;
 import com.itheima.service.CommentService;
@@ -28,8 +28,10 @@ public class CommentController {
     @PostMapping("/comment")
     public Result commit(@RequestBody Comment comment){
         log.info("提交评论: {}", comment);
-        commentService.commit(comment);
-        return new Result(Code.GET_OK,"提交成功");
+        boolean temp = commentService.commit(comment);
+        Integer code = temp ?Code.GET_OK:Code.GET_ERR;
+        String msg = temp ?"提交评论成功":"提交评论失败";
+        return new Result(code,msg);
     }
 
     /**
@@ -38,8 +40,10 @@ public class CommentController {
     @PostMapping("/delcomment")
     public Result deletecomment(@RequestBody Comment comment){
         log.info("删除评论: {}",comment);
-        commentService.deletecomment(comment);
-        return new Result(Code.GET_OK,"删除成功");
+        boolean temp = commentService.deletecomment(comment);
+        Integer code = temp ?Code.GET_OK:Code.GET_ERR;
+        String msg = temp ?"删除评论成功":"删除评论失败";
+        return new Result(code,msg);
     }
 
     /**
@@ -50,7 +54,9 @@ public class CommentController {
         log.info("电影请求: {}",movie);
         Movie movie1 = commentService.query1(movie.getMovieId());
         List<Comment> commentList = commentService.query2(movie.getMovieId());
-        commetDtails commetDtails = new commetDtails(movie1,commentList);
-        return new Result(Code.GET_OK, commetDtails,"删除成功");
+        CommetDtails commetDtails = new CommetDtails(movie1,commentList);
+        Integer code = commetDtails !=null?Code.GET_OK:Code.GET_ERR;
+        String msg = commetDtails !=null?"删除成功":"删除失败";
+        return new Result(code, commetDtails,msg);
     }
 }

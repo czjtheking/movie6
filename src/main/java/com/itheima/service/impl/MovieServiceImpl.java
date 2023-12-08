@@ -36,7 +36,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void addMovieService(Movie movie) {
+    public boolean addMovieService(Movie movie) {
         movieDao.addMovie(movie);
+        return true;
     }
 }

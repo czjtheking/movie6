@@ -2,16 +2,16 @@ package com.itheima.domain;
 
 import java.util.List;
 
-public class commetDtails {
+public class CommetDtails {
     private Movie movie;
     private List<Comment> commentList;
 
-    public commetDtails(Movie movie, List<Comment> commentList) {
+    public CommetDtails(Movie movie, List<Comment> commentList) {
         this.movie = movie;
         this.commentList = commentList;
     }
 
-    public commetDtails() {
+    public CommetDtails() {
     }
 
     public Movie getMovie() {

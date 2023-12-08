@@ -10,13 +10,13 @@ public interface CommentService {
      * 提交评论
      * @param comment
      */
-    void commit(Comment comment);
+    boolean commit(Comment comment);
 
     /**
      * 删除评论
      * @param comment
      */
-    void deletecomment(Comment comment);
+    boolean deletecomment(Comment comment);
 
     /**
      * 电影请求1

@@ -11,5 +11,5 @@ public interface MovieService {
     public List<Movie> movieSearchService(String movieName);
     public List<Movie> moviePopService();
     public List<Movie> movieMainService();
-    public void addMovieService(Movie movie);
+    public boolean addMovieService(Movie movie);
 }
