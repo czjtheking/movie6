@@ -207,6 +207,7 @@ export default {
           Number(store.getters.getUserId),
           Number(this.movie_id)
         );
+        this.storeMark = false;
         this.$refs.starRef.classList.remove("setcolor");
         this.$refs.storeTextRef.innerText = "点击收藏";
         this.$message.success({
@@ -220,6 +221,7 @@ export default {
           Number(store.getters.getUserId),
           Number(this.movie_id)
         );
+        this.storeMark = true;
         this.$refs.starRef.classList.add("setcolor");
         this.$refs.storeTextRef.innerText = "已收藏";
         this.$message.success({
