@@ -23,6 +23,11 @@
       class="acotr a"
     ></el-input>
     <el-input
+      v-model="actor"
+      placeholder="请输入电影评分"
+      class="acotr a"
+    ></el-input>
+    <el-input
       v-model="movie_intro"
       placeholder="请输入电影简介"
       type="textarea"
@@ -60,6 +65,7 @@ export default {
       genre: "",
       director: "",
       actor: "",
+      rate: "",
       fileList: [],
       img: "", //这个img保存的是图片相对路径，图片之前已经上传成功了，还缺拿取图片名补成相对路径
     };
@@ -68,13 +74,17 @@ export default {
     handleFileUpload() {
       console.log(this.fileList);
     },
+    async upload(res, file, fileList) {
+      console.log(res, file, fileList);
+    },
     async submit() {
       const res = await addMovie(
         this.movie_name,
-        this.movie_intro,
         this.genre,
         this.director,
         this.actor,
+        this.movie_intro,
+        this.rate,
         this.img
       );
       this.movie_name = "";
@@ -82,6 +92,7 @@ export default {
       this.genre = "";
       this.director = "";
       this.actor = "";
+      this.rate = "";
       this.img = "";
       this.$message.success("添加成功");
       console.log(res);
@@ -105,18 +116,18 @@ export default {
     font-size: 18px;
   }
   .a {
-    width: 200px;
+    width: 150px;
     margin-top: 90px;
     margin-right: 50px;
   }
   .movie-intro {
-    width: 800px;
+    width: 950px;
     height: 60px;
   }
   .button {
     position: absolute;
     bottom: 40px;
-    right: 100px;
+    right: 139px;
   }
 }
 </style>
