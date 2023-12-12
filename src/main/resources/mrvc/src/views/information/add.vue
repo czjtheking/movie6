@@ -43,9 +43,7 @@
     >
       <!-- 修改action为提交路径 -->
       <el-button size="small" type="primary" class="a">上传电影海报</el-button>
-      <div slot="tip" class="el-upload__tip">
-        只能上传jpg/png文件,且不超过500kb
-      </div>
+      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
     </el-upload>
     <el-button type="primary" plain class="button" @click="submit"
       >提交</el-button
