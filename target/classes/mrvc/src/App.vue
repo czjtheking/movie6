@@ -7,13 +7,21 @@
 </template>
 
 <script>
-import store from "@/store";
-
 export default {
   data() {
     return {
-      show: store.getters.getUserId,
+      show: false,
     };
+  },
+  watch: {
+    $route: async function (to, from) {
+      console.log(to, from);
+      if (to.fullPath === "/login" || to.fullPath === "/register") {
+        this.show = false;
+      } else {
+        this.show = true;
+      }
+    },
   },
 };
 </script>

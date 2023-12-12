@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="bg"></div>
-    <MainTitle v-if="true"> </MainTitle>
+    <MainTitle v-if="show"> </MainTitle>
     <router-view />
   </div>
 </template>
@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-      show: true,
+      show: false,
     };
   },
   watch: {
