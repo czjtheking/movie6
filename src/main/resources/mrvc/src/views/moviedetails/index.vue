@@ -83,7 +83,7 @@
         <ul>
           <li v-for="(item, index) in userComments" :key="index">
             <div class="comment2">
-              <p class="name" ref="u_name">{{ item.user_name }}</p>
+              <p class="name" ref="u_name">{{ item.userName }}</p>
               <p class="par" ref="u_par">{{ item.context }}</p>
               <p class="time" ref="u_time">{{ item.date }}</p>
             </div>

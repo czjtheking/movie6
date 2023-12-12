@@ -92,7 +92,6 @@ public class MovieController {
             Integer code = temp ? Code.GET_OK : Code.GET_ERR;
             String msg = temp ? "上传成功" : "上传失败";
             String url = realFilePath;
-            System.out.println(url);
             return new Result(code,url, msg);
         }
     }
