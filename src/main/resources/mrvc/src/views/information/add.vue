@@ -93,7 +93,11 @@ export default {
       this.actor = "";
       this.rate = "";
       this.img = "";
-      this.$message.success("添加成功");
+      this.$message.success({
+        message: "添加成功",
+        duration: 1000,
+        offset: 75,
+      });
       console.log(res);
     },
   },

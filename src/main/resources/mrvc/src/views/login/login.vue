@@ -48,6 +48,7 @@ export default {
       } else {
         if (this.user_ad === "1") this.iisAdmin = false;
         else this.iisAdmin = true;
+
         const res = await codeLogin(this.account, this.password, this.iisAdmin);
         this.$store.commit("user/setUserInfo", {
           userId: res.data.userId,
@@ -67,9 +68,9 @@ export default {
       this.$router.push("/register");
     },
   },
-  created() {
-    localStorage.clear();
-  },
+  // created() {
+  //   localStorage.clear();
+  // },
 };
 </script>
 
