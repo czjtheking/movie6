@@ -1,13 +1,17 @@
 package com.itheima.controller;
 
 
+import ch.qos.logback.core.util.FileUtil;
 import com.itheima.domain.Movie;
 import com.itheima.domain.Rate;
 import com.itheima.domain.Result;
 import com.itheima.service.MovieService;
 import com.itheima.service.RateService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +22,7 @@ import java.util.List;
 public class MovieController {
     private MovieService movieService;
     private RateService rateService;
+    private final String filePath = System.getProperty("user.dir") + "/src/main/resources/imags/";
 
     public MovieController(MovieService movieService, RateService rateService) {
         this.movieService = movieService;
@@ -69,5 +74,26 @@ public class MovieController {
         Integer code = temp ?Code.GET_OK:Code.GET_ERR;
         String msg = temp ?"评分成功":"评分失败";
         return new Result(code,msg);
+    }
+
+    @PostMapping("uploadPic")
+    public Result uploadPic(@RequestParam("file") MultipartFile file)  {
+        synchronized (MovieController.class) {
+            boolean temp = false;
+            String fileName = file.getOriginalFilename();
+            String realFilePath = filePath + "-"+ fileName;
+            try {
+                file.transferTo(new File(realFilePath));
+                temp = true;
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            Integer code = temp ? Code.GET_OK : Code.GET_ERR;
+            String msg = temp ? "上传成功" : "上传失败";
+            String url = realFilePath;
+            System.out.println(url);
+            return new Result(code,url, msg);
+        }
     }
 }

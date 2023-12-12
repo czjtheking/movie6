@@ -22,12 +22,13 @@ public interface MovieDao {
     @Select("select * from movie order by rand() limit 4")
     public List<Movie> searchMainPop();
 
-    @Insert("insert into movie (movieName,movieGenre,movieDirector,movieActor,movieIntro,moviePicURL) values (#{movieName},#{movieGenre},#{movieDirector},#{movieActor},#{movieIntro},#{moviePicURL})")
+    @Insert("insert into movie (movieName,movieGenre,movieDirector,movieActor,movieIntro,moviePicURL,movieRate) values (#{movieName},#{movieGenre},#{movieDirector},#{movieActor},#{movieIntro},#{moviePicURL},#{movieRate})")
     public void addMovie(Movie movie);
 
-    //@Select("select * from movie where movieId = #{movieId}")
-    //public Movie returnStoreMovie(Integer movieId);
+    @Select("select * from movie where movieId = #{movieId}")
+    public List<Movie> returnStoreMovie(Integer movieId);
 
+    @Select("select * from movie")
+    public List<Movie> getAllmovies();
 
-    //@Select("select")
 }

@@ -46,7 +46,7 @@ public class UserController {
             return new Result(Code.REGISTER_OK,newUser,"注册成功");
         }
         else {
-            return new Result(Code.REGISTER_ERR,"用户名已存在");
+            return new Result(Code.REGISTER_ERR,"用户已存在");
         }
     }
 
