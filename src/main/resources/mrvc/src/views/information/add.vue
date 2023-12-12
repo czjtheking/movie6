@@ -9,27 +9,27 @@
 
     <el-input
       v-model="genre"
-      placeholder="请输入电影类别"
+      placeholder="请输入类别"
       class="genre a"
     ></el-input>
     <el-input
       v-model="director"
-      placeholder="请输入电影导演"
+      placeholder="请输入导演"
       class="director a"
     ></el-input>
     <el-input
       v-model="actor"
-      placeholder="请输入电影主演"
+      placeholder="请输入主演"
       class="acotr a"
     ></el-input>
     <el-input
       v-model="rate"
-      placeholder="请输入电影评分"
+      placeholder="请输入评分"
       class="acotr a"
     ></el-input>
     <el-input
       v-model="movie_intro"
-      placeholder="请输入电影简介"
+      placeholder="请输入简介"
       type="textarea"
       class="movie-intro a"
     ></el-input>
@@ -75,7 +75,7 @@ export default {
       console.log(this.fileList);
     },
     async upload(res, file, fileList) {
-      this.img = res.url;
+      this.img = res.data;
       console.log(file, fileList);
     },
     async submit() {
