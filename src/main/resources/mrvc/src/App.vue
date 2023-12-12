@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="bg"></div>
-    <MainTitle v-if="show"> </MainTitle>
+    <MainTitle v-if="true"> </MainTitle>
     <router-view />
   </div>
 </template>

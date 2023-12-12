@@ -75,8 +75,8 @@ export default {
       console.log(this.fileList);
     },
     async upload(res, file, fileList) {
-      this.img = res.url;
-      console.log(file, fileList);
+      this.img = res.data;
+      console.log(res.data,file, fileList);
     },
     async submit() {
       const res = await addMovie(

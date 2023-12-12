@@ -81,7 +81,7 @@ public class MovieController {
         synchronized (MovieController.class) {
             boolean temp = false;
             String fileName = file.getOriginalFilename();
-            String realFilePath = filePath + "-"+ fileName;
+            String realFilePath = filePath + ""+ fileName;
             try {
                 file.transferTo(new File(realFilePath));
                 temp = true;

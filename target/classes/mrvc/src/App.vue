@@ -1,11 +1,22 @@
 <template>
   <div id="app">
     <div class="bg"></div>
-    <MainTitle> </MainTitle>
+    <MainTitle v-if="show"> </MainTitle>
     <router-view />
   </div>
 </template>
 
+<script>
+import store from "@/store";
+
+export default {
+  data() {
+    return {
+      show: store.getters.getUserId,
+    };
+  },
+};
+</script>
 
 <style lang="less">
 * {
