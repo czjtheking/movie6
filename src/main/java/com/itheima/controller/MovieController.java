@@ -7,23 +7,33 @@ import com.itheima.domain.Rate;
 import com.itheima.domain.Result;
 import com.itheima.service.MovieService;
 import com.itheima.service.RateService;
+import com.sun.jndi.toolkit.url.Uri;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/movies")
 @CrossOrigin
-
+@Configuration
+@ComponentScan("com.itheima.domain")
 public class MovieController {
     private MovieService movieService;
     private RateService rateService;
-    private final String filePath = System.getProperty("user.dir") + "/src/main/resources/imags/";
-
+    private final String filePath = System.getProperty("user.dir") + "/static/image/";
+    private  final String URL = "http://localhost/image";
     public MovieController(MovieService movieService, RateService rateService) {
         this.movieService = movieService;
         this.rateService = rateService;
@@ -61,6 +71,7 @@ public class MovieController {
 
     @PostMapping("/add")
     public Result addMovie(@RequestBody Movie movie){
+        System.out.println(movie);
         boolean temp = movieService.addMovieService(movie);
         Integer code = temp ?Code.GET_OK:Code.GET_ERR;
         String msg = temp ?"添加成功":"添加失败";
@@ -77,11 +88,11 @@ public class MovieController {
     }
 
     @PostMapping("uploadPic")
-    public Result uploadPic(@RequestParam("file") MultipartFile file)  {
+    public Result uploadPic(@RequestParam("file") MultipartFile file) throws MalformedURLException {
         synchronized (MovieController.class) {
             boolean temp = false;
             String fileName = file.getOriginalFilename();
-            String realFilePath = filePath + ""+ fileName;
+            String realFilePath = filePath + fileName;
             try {
                 file.transferTo(new File(realFilePath));
                 temp = true;
@@ -92,7 +103,7 @@ public class MovieController {
             Integer code = temp ? Code.GET_OK : Code.GET_ERR;
             String msg = temp ? "上传成功" : "上传失败";
             String url = realFilePath;
-            return new Result(code,url, msg);
+            return new Result(code,URL+File.separator+fileName, msg);
         }
     }
 }
