@@ -67,6 +67,9 @@ export default {
       this.$router.push("/register");
     },
   },
+  created() {
+    localStorage.clear();
+  },
 };
 </script>
 

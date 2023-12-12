@@ -23,7 +23,7 @@
       class="acotr a"
     ></el-input>
     <el-input
-      v-model="actor"
+      v-model="rate"
       placeholder="请输入电影评分"
       class="acotr a"
     ></el-input>
@@ -75,7 +75,8 @@ export default {
       console.log(this.fileList);
     },
     async upload(res, file, fileList) {
-      console.log(res, file, fileList);
+      this.img = res.url;
+      console.log(file, fileList);
     },
     async submit() {
       const res = await addMovie(
@@ -116,12 +117,12 @@ export default {
     font-size: 18px;
   }
   .a {
-    width: 150px;
+    width: 8vw;
     margin-top: 90px;
     margin-right: 50px;
   }
   .movie-intro {
-    width: 950px;
+    width: 51vw;
     height: 60px;
   }
   .button {
