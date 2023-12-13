@@ -26,9 +26,12 @@ public interface MovieDao {
     public void addMovie(Movie movie);
 
     @Select("select * from movie where movieId = #{movieId}")
-    public List<Movie> returnStoreMovie(Integer movieId);
+    public Movie returnMovie(Integer movieId);
 
     @Select("select * from movie")
     public List<Movie> getAllmovies();
+
+    @Select("select movieGenre from movie where movieId = #{movieId}")
+    public String searchMovieGenre(Integer movieId);
 
 }

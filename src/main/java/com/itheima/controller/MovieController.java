@@ -1,25 +1,22 @@
 package com.itheima.controller;
 
 
-import ch.qos.logback.core.util.FileUtil;
 import com.itheima.domain.Movie;
 import com.itheima.domain.Rate;
 import com.itheima.domain.Result;
+import com.itheima.domain.User;
 import com.itheima.service.MovieService;
 import com.itheima.service.RateService;
-import com.sun.jndi.toolkit.url.Uri;
+import com.itheima.service.RecommendationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +29,13 @@ import java.util.List;
 public class MovieController {
     private MovieService movieService;
     private RateService rateService;
+    private RecommendationService recommendationService;
     private final String filePath = System.getProperty("user.dir") + "/static/image/";
     private  final String URL = "http://localhost/image";
-    public MovieController(MovieService movieService, RateService rateService) {
+    public MovieController(MovieService movieService, RateService rateService, RecommendationService recommendationService) {
         this.movieService = movieService;
         this.rateService = rateService;
+        this.recommendationService = recommendationService;
     }
 
     @PostMapping("/search")
@@ -59,14 +58,19 @@ public class MovieController {
     }
 
     @PostMapping("/home")
-    public Result giveMain(){
+    public Result giveMain(@RequestBody User user){
         List<Movie> movieList = movieService.movieMainService();
-        List<Movie> movieList2 = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            movieList.add(new Movie());
-        }//个性化推荐的四个电影，暂时设置为空，后面要改
-        movieList.addAll(movieList2);
+        List<Movie> recommendMovie = recommendationService.getRecommendedMovies(user);
+        movieList.addAll(recommendMovie);
         return new Result(Code.GET_OK,movieList,"成功");
+    }
+
+    @PostMapping("/recommend")
+    public Result recommend(@RequestBody User user){
+        List<Movie> movieList = recommendationService.getRecommendedMovies(user);
+        Integer code = movieList!=null?Code.GET_OK:Code.GET_ERR;
+        String msg = movieList!=null?"个性推荐成功":"个性推荐失败";
+        return new Result(code,movieList,msg);
     }
 
     @PostMapping("/add")

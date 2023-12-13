@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import movie from './modules/movie'
 import user from './modules/user'
 import info from './modules/info'
+import title from './modules/title'
 
 Vue.use(Vuex)
 
@@ -22,6 +23,9 @@ export default new Vuex.Store({
     },
     getInfoMark(state) {
       return state.info.infoMark
+    },
+    getTitleMark(state) {
+      return state.title.titleMark
     }
   },
   mutations: {
@@ -32,5 +36,6 @@ export default new Vuex.Store({
     movie,
     user,
     info,
+    title,
   }
 })

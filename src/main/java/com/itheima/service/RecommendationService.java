@@ -8,7 +8,6 @@ import java.util.List;
 
 @Transactional
 public interface RecommendationService {
-    List<Movie> getRecommendedMovies(User user);
-
-    List<Movie> getRecommendedMovies(int userId);
+    public List<Movie> getRecommendedMovies(User user);
+    public double calculateSimilarity(String userGenre, String movieFeatures);
 }
