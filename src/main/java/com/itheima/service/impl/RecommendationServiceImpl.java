@@ -44,25 +44,27 @@ public class RecommendationServiceImpl implements RecommendationService {
         List<Movie> allMovies = movieDao.getAllmovies();
 
         // 计算用户与每个电影的相似度
-        List<MovieSimilarity> movieSimilarities = new ArrayList();
-        for (Movie movie : allMovies) {
-            double similarity = calculateSimilarity(movieDao.searchMovieGenre(selectMovieId), movieDao.searchMovieGenre(movie.getMovieId()));
+        List<MovieSimilarity> movieSimilarityArrayList = new ArrayList<>();
+        System.out.println(allMovies.size());
+        for (int i=0;i<allMovies.size();i++) {
+            double similarity = calculateSimilarity(movieDao.searchMovieGenre(selectMovieId), movieDao.searchMovieGenre(allMovies.get(i).getMovieId()));
             if(similarity<1&&similarity>0)
             {
-                System.out.println(similarity);
-                movieSimilarities.add(new MovieSimilarity(movie, similarity));
-            }
+                MovieSimilarity temp = new MovieSimilarity(allMovies.get(i),similarity);
+                movieSimilarityArrayList.add(temp);
 
+            }
         }
 
+
         // 对电影相似度进行排序
-        Collections.sort(movieSimilarities, Comparator.comparingDouble(MovieSimilarity::getSimilarity).reversed());
+        Collections.sort(movieSimilarityArrayList, Comparator.comparingDouble(MovieSimilarity::getSimilarity).reversed());
 
         // 获取推荐电影
         List<Movie> recommendedMovies = new ArrayList<>();
-        int maxRecommendations = 5; // 设置最大推荐电影数量
-        for (int i = 0; i < Math.min(maxRecommendations, movieSimilarities.size()); i++) {
-            recommendedMovies.add(movieSimilarities.get(i).getMovie());
+        int maxRecommendations = 4; // 设置最大推荐电影数量
+        for (int i = 0; i < Math.min(maxRecommendations, movieSimilarityArrayList.size()); i++) {
+            recommendedMovies.add(movieSimilarityArrayList.get(i).getMovie());
         }
         if (recommendedMovies!=null)
         {

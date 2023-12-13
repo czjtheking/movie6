@@ -24,4 +24,12 @@ public class MovieSimilarity {
     public void setSimilarity(double similarity) {
         this.similarity = similarity;
     }
+
+    @Override
+    public String toString() {
+        return "MovieSimilarity{" +
+                "movie=" + movie +
+                ", similarity=" + similarity +
+                '}';
+    }
 }
