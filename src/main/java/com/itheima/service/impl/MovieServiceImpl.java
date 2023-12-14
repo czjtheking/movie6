@@ -40,4 +40,10 @@ public class MovieServiceImpl implements MovieService {
         movieDao.addMovie(movie);
         return true;
     }
+
+    @Override
+    public List<Movie> movieNewService() {
+        List<Movie> movieList = movieDao.searchMainPop();
+        return movieList;
+    }
 }
