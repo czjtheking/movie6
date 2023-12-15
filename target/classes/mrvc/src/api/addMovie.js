@@ -9,7 +9,7 @@ export const addMovie = (movieName, movieGenre, movieDirector, movieActor, movie
     movieActor,
     movieIntro,
     movieRate,
-    moviePicURL,
+    moviePicURL
 
   });
 }

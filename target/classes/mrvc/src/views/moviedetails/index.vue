@@ -135,7 +135,7 @@ export default {
       movie_director: "",
       movie_actor: "",
       movie_intro: "",
-      movie_img: require("@/assets/test2.jpg"),
+      movie_img: "",
       movie_rate: 8.5,
       movie_link: "暂无",
       rateNum: 0,

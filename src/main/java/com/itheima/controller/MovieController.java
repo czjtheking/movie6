@@ -61,7 +61,14 @@ public class MovieController {
     public Result giveMain(@RequestBody User user){
         List<Movie> movieList = movieService.movieMainService();
         List<Movie> recommendMovie = recommendationService.getRecommendedMovies(user);
-        movieList.addAll(recommendMovie);
+        if (recommendMovie==null)
+        {
+            List<Movie> movieNewUserRecommend = movieService.movieNewService();
+            movieList.addAll(movieNewUserRecommend);
+        }
+        else {
+            movieList.addAll(recommendMovie);
+        }
         return new Result(Code.GET_OK,movieList,"成功");
     }
 

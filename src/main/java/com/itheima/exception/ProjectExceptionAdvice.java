@@ -1,5 +1,6 @@
-package com.itheima.controller;
+package com.itheima.exception;
 
+import com.itheima.controller.Code;
 import com.itheima.domain.Result;
 import com.itheima.exception.BusinessException;
 import com.itheima.exception.SystemException;

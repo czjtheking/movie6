@@ -31,6 +31,10 @@ public class RecommendationServiceImpl implements RecommendationService {
         // 获取用户的喜好数据
         int userId = user.getUserId();
         List<Store> storeList  = storeDao.selectStore(userId);
+        if (storeList.size()==0)
+        {
+            return null;
+        }
         List<Integer> userPreferences = new ArrayList<>();
         for (int i = 0;i<storeList.size();i++)
         {
@@ -66,12 +70,7 @@ public class RecommendationServiceImpl implements RecommendationService {
         for (int i = 0; i < Math.min(maxRecommendations, movieSimilarityArrayList.size()); i++) {
             recommendedMovies.add(movieSimilarityArrayList.get(i).getMovie());
         }
-        if (recommendedMovies!=null)
-        {
             return recommendedMovies;
-        }
-        else return null;
-
     }
 
     @Override
