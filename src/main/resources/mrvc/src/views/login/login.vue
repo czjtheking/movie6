@@ -54,6 +54,7 @@ export default {
           userId: res.data.userId,
           isAdmin: res.data.userAd,
           userName: res.data.userName,
+          userAvatar: res.data.userAvatar,
         }); //提交userInfo存储 是
         console.log(res);
         this.$message.success({

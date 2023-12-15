@@ -21,6 +21,9 @@ export default new Vuex.Store({
     getUserName(state) {
       return state.user.userInfo.userName
     },
+    getUserAvatar(state) {
+      return state.user.userInfo.userAvatar
+    },
     getInfoMark(state) {
       return state.info.infoMark
     },

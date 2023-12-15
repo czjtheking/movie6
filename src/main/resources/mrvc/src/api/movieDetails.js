@@ -1,13 +1,14 @@
 import request from '@/utils/request'
 
 //提交评论
-export const newComment = (userId, movieId, userName, context, date) => {
+export const newComment = (userId, movieId, userName, context, date, userAvatar) => {
   return request.post("/movies/comment", { //这个路径后面要修改
     userId,
     movieId,
     userName,
     context,
-    date
+    date,
+    userAvatar
   });
 }
 //提交收藏
