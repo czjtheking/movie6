@@ -12,10 +12,10 @@ public interface UserDao {
     public int save(User user);
 
     @Update("update user set userName = #{userName} where userId = #{userId}")
-    public void updateName(Integer userId,String userName);
+    public int updateName(Integer userId,String userName);
 
     @Update("update user set userPsw = #{userPsw} where userId = #{userId}")
-    public void updatePsw(Integer userId,String userPsw);
+    public int updatePsw(Integer userId,String userPsw);
 
     @Delete("delete from user where userId = #{userId}")
     public int delete(Integer User_id);

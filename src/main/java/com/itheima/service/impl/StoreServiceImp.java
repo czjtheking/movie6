@@ -6,7 +6,7 @@ import com.itheima.dao.MovieDao;
 import com.itheima.dao.StoreDao;
 import com.itheima.domain.Movie;
 import com.itheima.domain.Store;
-import com.itheima.domain.storeDetails;
+import com.itheima.domain.StoreDetails;
 import com.itheima.service.StoreService;
 import org.springframework.stereotype.Service;
 
@@ -33,25 +33,52 @@ public class StoreServiceImp implements StoreService {
     }
 
     @Override
-    public void saveStore(Integer userId, Integer movieId) {
-        storeDao.saveStore(userId,movieId);
+    public boolean saveStoreService(Store store) {
+        List<Store> storeList = storeDao.isRepeat(store);
+        if (storeList.size()==0)
+        {
+            storeDao.saveStore(store);
+            return true;
+        }
+        else return false;
+
+
     }
 
     @Override
-    public void deleteStore(Integer storeId) {
+    public boolean deleteStoreService(Integer storeId) {
         storeDao.deleteStore(storeId);
+        return true;
     }
 
     @Override
-    public List<storeDetails> getAllStoreReturn(Integer userId) {
+    public List<StoreDetails> getAllStoreReturn(Integer userId) {
         List<Store> storeList = storeDao.selectStoreId(userId);
-        List<storeDetails> storeDetailsList = new ArrayList<>();
+        List<StoreDetails> storeDetailsList = new ArrayList<>();
         for (int i = 0;i < storeList.size();i++){
             Store temp = storeList.get(i);
             Movie movieTemp = commentDao.query1(temp.getMovieId());
-            storeDetails temp2 = new storeDetails(temp.getStoreId(),userId,movieTemp);
+            StoreDetails temp2 = new StoreDetails(temp.getStoreId(),userId,movieTemp);
             storeDetailsList.add(temp2);
         }
         return storeDetailsList;
     }
+
+    @Override
+    public boolean delStoreBypage(Integer userId, Integer movieId) {
+        storeDao.delStoreByuserAndmovie(userId,movieId);
+        return true;
+    }
+
+    @Override
+    public boolean isStore(Integer userId,Integer movieId) {
+        List<Store> storeList = storeDao.haveStore(userId,movieId);
+        if (storeList.size()==0)
+        {
+            return false;
+        }
+        else return true;
+    }
+
+
 }

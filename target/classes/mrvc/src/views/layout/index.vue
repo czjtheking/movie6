@@ -10,6 +10,7 @@ import LayoutBanner from "@/components/LayoutBanner";
 import LayoutRecom from "@/components/LayoutRecom";
 
 import { getHomeData } from "@/api/layout";
+import store from "@/store";
 
 export default {
   name: "LayoutIndex",
@@ -52,7 +53,8 @@ export default {
     };
   },
   async created() {
-    const res = await getHomeData();
+    this.$store.commit("info/setInfoMark", 1);
+    const res = await getHomeData(Number(store.getters.getUserId));
     console.log(res);
     // this.bannerList = res.data.slice(0, 5); //接收三个数组存入数据
     this.popList = res.data.slice(5, 9);

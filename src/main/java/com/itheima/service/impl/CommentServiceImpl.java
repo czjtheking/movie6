@@ -19,13 +19,15 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    public void commit(Comment comment) {
+    public boolean commit(Comment comment) {
         CommentMapper.saveComment(comment);
+        return true;
     }
 
     @Override
-    public void deletecomment(Comment comment) {
+    public boolean deletecomment(Comment comment) {
         CommentMapper.deletecomment(comment);
+        return true;
     }
 
     public Movie query1(Integer movieId) {
@@ -34,5 +36,10 @@ public class CommentServiceImpl implements CommentService {
 
     public List<Comment> query2(Integer movieId) {
         return CommentMapper.query2(movieId);
+    }
+
+    @Override
+    public boolean keepName(Integer userId, String userName) {
+        return CommentMapper.keepName(userId,userName)>0;
     }
 }

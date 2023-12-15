@@ -3,7 +3,7 @@
     <div class="top"></div>
     <div class="main">
       <div class="left">
-        <div class="option to-big" @click="toBig(1)" ref="opt1">
+        <div class="option" @click="toBig(1)" ref="opt1">
           <router-link to="/infor">个人信息</router-link>
         </div>
         <div class="option" @click="toBig(2)" ref="opt2">
@@ -28,13 +28,37 @@ export default {
   data() {
     return {
       isAdmin: false,
+      mark: 1,
     };
   },
+
   created() {
     this.isAdmin = store.getters.getAuth;
+    this.mark = Number(store.getters.getInfoMark);
+    console.log(this.mark);
+  },
+  mounted() {
+    console.log(this.mark);
+    if (this.mark === 1) {
+      console.log(111);
+      this.$refs.opt2.classList.remove("to-big");
+      this.$refs.opt3.classList.remove("to-big");
+      this.$refs.opt1.classList.add("to-big");
+    } else if (this.mark === 2) {
+      console.log(222);
+      this.$refs.opt1.classList.remove("to-big");
+      this.$refs.opt3.classList.remove("to-big");
+      this.$refs.opt2.classList.add("to-big");
+    } else if (this.mark === 3) {
+      console.log(333);
+      this.$refs.opt3.classList.add("to-big");
+      this.$refs.opt2.classList.remove("to-big");
+      this.$refs.opt1.classList.remove("to-big");
+    }
   },
   methods: {
     toBig(id) {
+      this.$store.commit("info/setInfoMark", id);
       if (id === 1) {
         this.$refs.opt2.classList.remove("to-big");
         this.$refs.opt3.classList.remove("to-big");

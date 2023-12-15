@@ -18,13 +18,11 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean upName(Integer userId, String userName) {
-        userDao.updateName(userId,userName);
-        return true;
+        return userDao.updateName(userId,userName)>0;
     }
 
     public boolean upPsw(Integer userId, String userName){
-        userDao.updatePsw(userId,userName);
-        return true;
+        return userDao.updatePsw(userId,userName)>0;
     }
 
     public boolean delete(Integer User_id) {

@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface StoreDao {
     @Insert("insert into stores (userId,movieId) values (#{userId},#{movieId})")
-    public void saveStore(Integer userId,Integer movieId);
+    public void saveStore(Store store);
 
     @Delete("delete from stores where storeId = #{storeId}")
     public void deleteStore(Integer storeId);
@@ -21,6 +21,15 @@ public interface StoreDao {
 
     @Select("select * from stores where userId = #{userId}")
     public List<Store> selectStoreId(Integer userId);
+
+    @Select("select * from stores where userId = #{userId} and movieId = #{movieId}")
+    public List<Store> isRepeat(Store store);
+
+    @Select("select * from stores where userId = #{userId} and movieId = #{movieId}")
+    public List<Store> haveStore(Integer userId,Integer movieId);
+
+    @Delete("delete from stores where userId = #{userId} and movieId = #{movieId}")
+    public void delStoreByuserAndmovie(Integer userId,Integer movieId);
 
 
 }

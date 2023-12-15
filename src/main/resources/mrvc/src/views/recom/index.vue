@@ -9,7 +9,7 @@
         :key="index"
         @click="handleDetails(item.movieId)"
       >
-        <img :src="item.moviePicURL" alt="" />
+        <img :src="item.moviePicURL" alt="" referrerpolicy="no-referrer"/>
         <span>{{ item.movieName }}</span>
       </div>
 
