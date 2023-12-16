@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Code;
 import com.itheima.domain.Result;
 import com.itheima.domain.User;
 import com.itheima.service.CommentService;

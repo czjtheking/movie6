@@ -8,7 +8,7 @@ import java.util.List;
 // TODO 添加@Mapper
 @Mapper
 public interface UserDao {
-    @Insert("insert into user (userAccount,userPsw,userAd) values(#{userAccount},#{userPsw},#{userAd})")
+    @Insert("insert into user (userName,userAccount,userPsw,userAd) values(#{userName},#{userAccount},#{userPsw},#{userAd})")
     public int save(User user);
 
     @Update("update user set userName = #{userName} where userId = #{userId}")

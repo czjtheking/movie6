@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 
+import com.itheima.domain.Code;
 import com.itheima.domain.Result;
 import com.itheima.domain.Store;
 import com.itheima.domain.StoreDetails;
@@ -15,18 +16,16 @@ import java.util.List;
 @CrossOrigin
 public class StoreController {
     private StoreService storeService;
-    private MovieService movieService;
 
     public StoreController(StoreService storeService, MovieService movieService) {
         this.storeService = storeService;
-        this.movieService = movieService;
     }
 
     @PostMapping("/commit")
     public Result commit(@RequestBody Store store)
     {
         boolean temp = storeService.saveStoreService(store);
-        Integer code = temp ?Code.GET_OK:Code.GET_ERR;
+        Integer code = temp ? Code.GET_OK:Code.GET_ERR;
         String msg = temp ?"收藏成功":"电影已收藏，请勿重复收藏";
         return new Result(code,msg);
     }

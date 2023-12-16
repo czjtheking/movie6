@@ -1,4 +1,4 @@
-package com.itheima.controller;
+package com.itheima.domain;
 
 public class Code {
     public static final Integer REGISTER_OK = 200;
