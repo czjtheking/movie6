@@ -58,8 +58,8 @@
     <div class="comment">
       <p class="pl">评论</p>
       <div class="box">
-        <div class="head"></div>
         <div class="box2">
+          <img :src="userAvatar" alt="" class="avatar" />
           <textarea
             maxlength="200"
             class="text1"
@@ -82,6 +82,7 @@
       <div class="box3" ref="newComment">
         <ul>
           <li v-for="(item, index) in userComments" :key="index">
+            <img :src="item.userAvatar" alt="" class="avatar" />
             <div class="comment2">
               <p class="name" ref="u_name">{{ item.userName }}</p>
               <p class="par" ref="u_par">{{ item.context }}</p>
@@ -143,6 +144,7 @@ export default {
       textnum0: 0,
       colors: ["#99A9BF", "#F7BA2A", "#FF9900"],
       userComments: [],
+      userAvatar: require("@/assets/test.png"), //这里默认测试
     };
   },
   methods: {
@@ -182,18 +184,21 @@ export default {
       } else {
         const obj = {
           user_id: store.getters.getUserId,
+          userAvatar: store.getters.getUserAvatar,
           movie_id: this.movie_id,
           userName: store.getters.getUserName,
           context: this.$refs.textRef.value,
           date: new Date().toLocaleString(),
         };
+        //this.userComments.unshift(obj); //测试用要删
         console.log(obj);
         const res = await newComment(
           Number(obj.user_id),
           Number(obj.movie_id),
           obj.userName,
           obj.context,
-          obj.date
+          obj.date,
+          obj.userAvatar
         );
         this.userComments.unshift(obj);
         console.log(res);
@@ -204,10 +209,8 @@ export default {
     async handleStore() {
       //用户点击收藏，提交收藏请求
       if (this.storeMark) {
-
-        console.log(store.getters.getUserId,this.movie_id)
+        console.log(store.getters.getUserId, this.movie_id);
         const res = await cancelStore(
-
           Number(store.getters.getUserId),
           Number(this.movie_id)
         );
@@ -282,6 +285,7 @@ export default {
 
     this.rateNum = res.data.rateNum; //用户评分
     this.storeMark = res.data.storeMark; //标记收藏
+    this.userAvatar = store.getters.getUserAvatar;
     if (this.storeMark === true) {
       document.querySelector("#storeText").innerText = "已收藏";
       document.querySelector("#storeIcon").classList.add("setcolor");
@@ -481,14 +485,37 @@ export default {
       justify-content: space-evenly;
       align-items: flex-start;
     }
+    .box2 {
+      margin-left: 4.5vw;
+      margin-top: 10px;
 
-    .box2 textarea {
-      transition: all 0.1s;
-    }
+      position: relative;
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
 
-    .box2 textarea:hover {
-      background-color: rgb(255, 255, 255);
-      box-shadow: 0.5px 0.5px 2px 0.5px rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 5px;
+        top: 5px;
+
+        display: inline-block;
+      }
+      textarea {
+        margin-left: 70px;
+        transition: all 0.1s;
+      }
+      textarea:hover {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0.5px 0.5px 2px 0.5px rgba(0, 0, 0, 0.5);
+      }
+      span {
+        position: absolute;
+        font-size: 14px;
+        bottom: -15px;
+        right: 2px;
+        color: #8a8a8a;
+      }
     }
 
     .text2 {
@@ -517,20 +544,6 @@ export default {
       pointer-events: none;
     }
 
-    .box2 {
-      margin-top: 10px;
-
-      position: relative;
-    }
-
-    .box2 span {
-      position: absolute;
-      font-size: 14px;
-      bottom: -15px;
-      right: 2px;
-      color: #8a8a8a;
-    }
-
     .dontsee {
       display: none;
     }
@@ -545,6 +558,7 @@ export default {
       line-height: 66px;
       border: 0;
       margin-top: 10px;
+      margin-right: 2vw;
     }
 
     button.longer {
@@ -586,6 +600,15 @@ export default {
       box-shadow: 0.5px 0.5px 2px 0.5px rgba(0, 0, 0, 0.5);
 
       border-radius: 10px;
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 5px;
+        margin-right: 2px;
+
+        display: inline-block;
+      }
 
       .delete {
         margin-top: 25px;
@@ -609,7 +632,7 @@ export default {
       flex: 1;
       height: 80px;
 
-      margin-left: 15px;
+      margin-left: 5px;
       padding: 4px;
       padding-top: 0;
       display: flex;
