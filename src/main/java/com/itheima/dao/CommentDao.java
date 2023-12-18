@@ -13,7 +13,7 @@ public interface CommentDao {
      * 提交评论
      * @param comment
      */
-    @Insert("insert into comments (userId, movieId, userName, context, date) values (#{userId},#{movieId},#{userName},#{context},#{date})")
+    @Insert("insert into comments (userId, movieId, userName, context, date,userAvatar) values (#{userId},#{movieId},#{userName},#{context},#{date},#{userAvatar})")
     void saveComment(Comment comment);
 
     /**

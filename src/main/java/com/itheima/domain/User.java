@@ -6,15 +6,25 @@ public class User {
     private String userAccount;
     private String userPsw;
     private boolean userAd;
+    private String userAvatar;
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "User_id=" + userId +
-                ", User_name='" + userName + '\'' +
-                ", User_Account='" + userAccount + '\'' +
-                ", User_psw='" + userPsw + '\'' +
-                ", User_ad=" + userAd +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userAccount='" + userAccount + '\'' +
+                ", userPsw='" + userPsw + '\'' +
+                ", userAd=" + userAd +
+                ", userAvatar='" + userAvatar + '\'' +
                 '}';
     }
 

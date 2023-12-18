@@ -48,12 +48,16 @@ public class UserServiceImpl implements UserService {
         }
         else {
             user.setUserName("defaultName");
+            user.setUserAvatar("http://localhost/userImage/defaultPic.png");
             userDao.save(user);
             return user;
         }
     }
 
-
+    @Override
+    public boolean savePicURL(String userAvatar) {
+        return userDao.savePic(userAvatar)>0;
+    }
 
 
 }

@@ -4,7 +4,6 @@ import com.itheima.service.CommentService;
 import com.itheima.service.RateService;
 import com.itheima.service.StoreService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +15,12 @@ import java.util.List;
 public class CommentController {
 
 
-    @Autowired
     private CommentService commentService;
     private RateService rateService;
     private StoreService storeService;
 
-    public CommentController(RateService rateService, StoreService storeService) {
+    public CommentController(CommentService commentService, RateService rateService, StoreService storeService) {
+        this.commentService = commentService;
         this.rateService = rateService;
         this.storeService = storeService;
     }
@@ -62,9 +61,9 @@ public class CommentController {
         List<Comment> commentList = commentService.query2(rate.getMovieId());
         double rateNum = rateService.getRate(rate);
         boolean storeMark = storeService.isStore(rate.getUserId(),rate.getMovieId());
-        CommetDtails commetDtails = new CommetDtails(movie1,rateNum,storeMark,commentList);
+        CommentDetails commentDetails = new CommentDetails(movie1,rateNum,storeMark,commentList);
         Integer code = Code.GET_OK;
         String msg = "提交电影详情页成功";
-        return new Result(code, commetDtails,msg);
+        return new Result(code, commentDetails,msg);
     }
 }

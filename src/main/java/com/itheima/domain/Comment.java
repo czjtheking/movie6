@@ -8,8 +8,29 @@ public class Comment {
     private Integer movieId;
     private String userName;
     private String context;
-
     private String date;
+    private String userAvatar;
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId=" + commentId +
+                ", userId=" + userId +
+                ", movieId=" + movieId +
+                ", userName='" + userName + '\'' +
+                ", context='" + context + '\'' +
+                ", date='" + date + '\'' +
+                ", userAvatar='" + userAvatar + '\'' +
+                '}';
+    }
 
     public Integer getCommentId() {
         return commentId;
@@ -59,15 +80,4 @@ public class Comment {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "commentId=" + commentId +
-                ", userId=" + userId +
-                ", movieId=" + movieId +
-                ", userName='" + userName + '\'' +
-                ", context='" + context + '\'' +
-                ", date='" + date + '\'' +
-                '}';
-    }
 }
