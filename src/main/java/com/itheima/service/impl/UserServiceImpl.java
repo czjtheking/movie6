@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         else {
-            userDao.updateName(user.getUserId(),"default_name");
+            user.setUserName("defaultName");
             userDao.save(user);
             return user;
         }
