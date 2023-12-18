@@ -6,13 +6,19 @@ import com.itheima.domain.User;
 import com.itheima.service.CommentService;
 import com.itheima.service.UserService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
 
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
 public class UserController {
     private final UserService userService;
-    private CommentService commentService;
+    private final CommentService commentService;
+    private final String filePath = System.getProperty("user.dir") + "/static/userImage/";
 
     public UserController(UserService userService, CommentService commentService) {
         this.userService = userService;
@@ -69,6 +75,29 @@ public class UserController {
         return new Result(code,msg);
     }
 
+    @PostMapping("avatar")
+    public Result uploadUserPic(@RequestParam("file") MultipartFile file,User user) {
+        synchronized (UserController.class) {
+            boolean temp = false;
+            String fileName = file.getOriginalFilename();
+            String realFilePath = filePath + fileName;
+            try {
+                file.transferTo(new File(realFilePath));
+                temp = true;
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            Integer code = temp ? Code.GET_OK : Code.GET_ERR;
+            String msg = temp ? "上传成功" : "上传失败";
+            String URL = "http://localhost/userImage";
+            String path = URL +File.separator+fileName;
+            user.setUserAvatar(path);
+            userService.savePicURL(user.getUserAvatar(),user.getUserId());
+            commentService.keepAvatar(user.getUserAvatar(),user.getUserId());
+            return new Result(code, path, msg);
+        }
+    }
 
 
 }

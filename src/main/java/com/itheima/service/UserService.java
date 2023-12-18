@@ -14,7 +14,6 @@ public interface UserService {
      * @return
      */
     public boolean save(User user);
-
     /**
      * 修改
      * @param
@@ -51,5 +50,6 @@ public interface UserService {
      * 注册
      */
 
+    public boolean savePicURL(String userAvatar,Integer userId);
 
 }

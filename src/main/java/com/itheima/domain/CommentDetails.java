@@ -2,7 +2,7 @@ package com.itheima.domain;
 
 import java.util.List;
 
-public class CommetDtails {
+public class CommentDetails {
     private Movie movie;
     private List<Comment> commentList;
     private double rateNum = 0;
@@ -12,7 +12,7 @@ public class CommetDtails {
         return storeMark;
     }
 
-    public CommetDtails(Movie movie, double rateNum, boolean storeMark,List<Comment> commentList) {
+    public CommentDetails(Movie movie, double rateNum, boolean storeMark, List<Comment> commentList) {
         this.movie = movie;
         this.commentList = commentList;
         this.rateNum = rateNum;
@@ -42,7 +42,7 @@ public class CommetDtails {
     }
 
 
-    public CommetDtails() {
+    public CommentDetails() {
     }
 
     public Movie getMovie() {

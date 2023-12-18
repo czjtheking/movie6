@@ -8,7 +8,7 @@ import java.util.List;
 // TODO 添加@Mapper
 @Mapper
 public interface UserDao {
-    @Insert("insert into user (userName,userAccount,userPsw,userAd) values(#{userName},#{userAccount},#{userPsw},#{userAd})")
+    @Insert("insert into user (userName,userAccount,userPsw,userAd,userAvatar) values(#{userName},#{userAccount},#{userPsw},#{userAd},#{userAvatar})")
     public int save(User user);
 
     @Update("update user set userName = #{userName} where userId = #{userId}")
@@ -19,6 +19,9 @@ public interface UserDao {
 
     @Delete("delete from user where userId = #{userId}")
     public int delete(Integer User_id);
+
+    @Update("update user set userAvatar = #{userAvatar} where userId = #{userId}")
+    public int savePic(String userAvatar,Integer userId);
 
     @Select("select * from user where userId = #{userId}")
     public User findUser(Integer userId);

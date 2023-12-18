@@ -1,6 +1,20 @@
 <template>
   <div class="my-info">
     <div class="title"><i class="el-icon-notebook-1">个人信息</i></div>
+    <div class="ava">
+      头像:
+      <el-upload
+        class="avatar-uploader"
+        action="http://localhost/users/avatar"
+        :data="{ userId: uid }"
+        :show-file-list="false"
+        :on-success="handleAvatarSuccess"
+      >
+        <img v-if="avatarURL" :src="avatarURL" class="avatar" />
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
+    </div>
+
     <div class="uid">uid:{{ uid }}</div>
     <div class="uname">
       <div v-if="isShowEditUname">
@@ -69,9 +83,22 @@ export default {
       password: "",
       isShowEditUname: false,
       isShowEditPassword: false,
+      avatarURL: "", //这里默认测试
     };
   },
   methods: {
+    handleAvatarSuccess(res, file) {
+      console.log("修改头像结果：", res.data, file);
+
+      console.log(this.avatarUrl)
+      this.$store.commit("user/setUserInfo", {
+        userId: store.getters.getUserId,
+        isAdmin: store.getters.getAuth,
+        userName: store.getters.getUserName,
+        userAvatar: res.data,
+      }); //提交userInfo存储 是
+      this.avatarUrl =store.getters.getUserAvatar;
+    },
     handleEditUname() {
       this.isShowEditUname = true;
     },
@@ -85,6 +112,7 @@ export default {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
         userName: this.uname,
+        userAvatar: store.getters.getUserAvatar,
       }); //提交userInfo存储
       this.isShowEditUname = false;
       this.$message.success("修改成功");
@@ -104,6 +132,7 @@ export default {
     this.uname = res.data.userName;
     this.account = res.data.userAccount;
     this.password = res.data.userPsw;
+    this.avatarURL = store.getters.getUserAvatar;
     console.log(res);
   },
 };
@@ -128,6 +157,37 @@ export default {
     color: #00a1d6;
     font-size: 18px;
   }
+  .ava {
+    display: flex;
+    margin-top: 10px;
+    .avatar-uploader {
+      width: 178px;
+      height: 178px;
+      border: 1px solid #d8d2d2;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      margin-left: 20px;
+    }
+    .avatar-uploader:hover {
+      border-color: #409eff;
+    }
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+    .avatar {
+      width: 178px;
+      height: 178px;
+      display: block;
+    }
+  }
+
   .uid {
     line-height: 50px;
     height: 50px;

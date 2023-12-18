@@ -10,7 +10,11 @@
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
       >
-        <img v-if="avatarURL" :src="avatarURL" class="avatar" />
+        <img
+          v-if="avatarURL"
+          :src="avatarURL + '?timestamp=' + new Date().getTime()"
+          class="avatar"
+        />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
     </div>
@@ -86,7 +90,7 @@ export default {
       password: "",
       isShowEditUname: false,
       isShowEditPassword: false,
-      avatarURL: "", //这里默认测试
+      avatarURL: store.getters.getUserAvatar, //这里默认测试
     };
   },
   methods: {
@@ -109,6 +113,7 @@ export default {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
         userName: store.getters.getUserName,
+        userAvatar: res.data,
         userAvatar: res.data,
       }); //提交userInfo存储 是
       location.reload();

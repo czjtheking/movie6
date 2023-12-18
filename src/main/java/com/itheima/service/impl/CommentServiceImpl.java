@@ -42,4 +42,10 @@ public class CommentServiceImpl implements CommentService {
     public boolean keepName(Integer userId, String userName) {
         return CommentMapper.keepName(userId,userName)>0;
     }
+
+    @Override
+    public boolean keepAvatar(String userAvatar, Integer userId) {
+        CommentMapper.keepAvatar(userAvatar,userId);
+        return true;
+    }
 }

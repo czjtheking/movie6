@@ -13,7 +13,7 @@ public interface CommentDao {
      * 提交评论
      * @param comment
      */
-    @Insert("insert into comments (userId, movieId, userName, context, date) values (#{userId},#{movieId},#{userName},#{context},#{date})")
+    @Insert("insert into comments (userId, movieId, userName, context, date,userAvatar) values (#{userId},#{movieId},#{userName},#{context},#{date},#{userAvatar})")
     void saveComment(Comment comment);
 
     /**
@@ -26,7 +26,8 @@ public interface CommentDao {
     @Update("update comments set userName = #{userName} where userId = #{userId}")
     int keepName(Integer userId,String userName);
 
-
+    @Update("update comments set userAvatar = #{userAvatar} where userId = #{userId}")
+    void keepAvatar(String userAvatar,Integer userId);
     /**
      * 电影请求1
      * @param
