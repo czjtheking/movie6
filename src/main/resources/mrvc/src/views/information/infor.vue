@@ -62,6 +62,9 @@
         >
       </div>
     </div>
+    <div class="gologin">
+      <el-link type="primary" @click="gologin">切换账号</el-link>
+    </div>
   </div>
 </template>
 
@@ -87,15 +90,28 @@ export default {
     };
   },
   methods: {
+    gologin() {
+      this.$router.push(
+        {
+          path: "/login",
+          query: {
+            searchWords: this.search_words,
+          },
+        },
+        () => {},
+        () => {}
+      );
+    },
     handleAvatarSuccess(res, file) {
       console.log("修改头像结果：", res, file);
-      this.avatarUrl = res.data.path;
+      this.avatarUrl = res.data;
       this.$store.commit("user/setUserInfo", {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
         userName: store.getters.getUserName,
-        userAvatar: res.data.path,
+        userAvatar: res.data,
       }); //提交userInfo存储 是
+      location.reload();
     },
     handleEditUname() {
       this.isShowEditUname = true;
@@ -206,7 +222,7 @@ export default {
   .password {
     height: 50px;
     line-height: 50px;
-    margin-bottom: 450px;
+    margin-bottom: 20px;
     .password-context {
       display: inline-block;
       margin-right: 10px;
@@ -219,6 +235,9 @@ export default {
     padding: 0;
     font-size: 13px;
     text-align: center;
+  }
+  .gologin {
+    margin-bottom: 450px;
   }
 }
 </style>
