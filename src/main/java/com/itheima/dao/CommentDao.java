@@ -26,7 +26,8 @@ public interface CommentDao {
     @Update("update comments set userName = #{userName} where userId = #{userId}")
     int keepName(Integer userId,String userName);
 
-
+    @Update("update comments set userAvatar = #{userAvatar} where userId = #{userId}")
+    void keepAvatar(String userAvatar,Integer userId);
     /**
      * 电影请求1
      * @param

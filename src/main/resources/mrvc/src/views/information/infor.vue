@@ -10,7 +10,7 @@
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
       >
-        <img v-if="avatarURL" :src="avatarURL" class="avatar" />
+        <img v-if="avatarURL" :src="avatarURL+'?timestamp='+new Date().getTime()" class="avatar" />
         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
       </el-upload>
     </div>
@@ -83,19 +83,22 @@ export default {
       password: "",
       isShowEditUname: false,
       isShowEditPassword: false,
-      avatarURL: "", //这里默认测试
+      avatarURL: store.getters.getUserAvatar, //这里默认测试
     };
   },
   methods: {
     handleAvatarSuccess(res, file) {
-      console.log("修改头像结果：", res, file);
-      this.avatarUrl = res.data.path;
+      console.log("修改头像结果：", res.data, file);
+
+      console.log(this.avatarUrl)
       this.$store.commit("user/setUserInfo", {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
         userName: store.getters.getUserName,
-        userAvatar: res.data.path,
+        userAvatar: res.data,
       }); //提交userInfo存储 是
+      location.reload();
+      //this.avatarUrl =store.getters.getUserAvatar;
     },
     handleEditUname() {
       this.isShowEditUname = true;

@@ -32,4 +32,6 @@ public interface CommentService {
     List<Comment> query2(Integer movieId);
 
     boolean keepName(Integer userId,String userName);
+
+    boolean keepAvatar(String userAvatar,Integer userId);
 }
