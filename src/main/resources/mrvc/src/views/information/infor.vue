@@ -114,7 +114,6 @@ export default {
         isAdmin: store.getters.getAuth,
         userName: store.getters.getUserName,
         userAvatar: res.data,
-        userAvatar: res.data,
       }); //提交userInfo存储 是
       location.reload();
     },
