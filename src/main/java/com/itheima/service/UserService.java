@@ -50,6 +50,6 @@ public interface UserService {
      * 注册
      */
 
-    public boolean savePicURL(String userAvatar);
+    public boolean savePicURL(String userAvatar,Integer userId);
 
 }

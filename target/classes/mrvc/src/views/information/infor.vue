@@ -6,6 +6,7 @@
       <el-upload
         class="avatar-uploader"
         action="http://localhost/users/avatar"
+        :data="{ userId: uid }"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
       >
@@ -92,7 +93,7 @@ export default {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
         userName: store.getters.getUserName,
-        userAvatar: res.data.avatarUrl,
+        userAvatar: res.data.path,
       }); //提交userInfo存储 是
     },
     handleEditUname() {

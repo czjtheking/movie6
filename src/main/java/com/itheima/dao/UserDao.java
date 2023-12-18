@@ -21,7 +21,7 @@ public interface UserDao {
     public int delete(Integer User_id);
 
     @Update("update user set userAvatar = #{userAvatar} where userId = #{userId}")
-    public int savePic(String userAvatar);
+    public int savePic(String userAvatar,Integer userId);
 
     @Select("select * from user where userId = #{userId}")
     public User findUser(Integer userId);

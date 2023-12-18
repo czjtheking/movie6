@@ -92,8 +92,10 @@ public class UserController {
             String msg = temp ? "上传成功" : "上传失败";
             String URL = "http://localhost/userImage";
             String path = URL +File.separator+fileName;
+            System.out.println(path);
             user.setUserAvatar(path);
-            userService.savePicURL(user.getUserAvatar());
+            userService.savePicURL(user.getUserAvatar(),user.getUserId());
+            System.out.println(path);
             return new Result(code, path, msg);
         }
     }

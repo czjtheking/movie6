@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean savePicURL(String userAvatar) {
-        return userDao.savePic(userAvatar)>0;
+    public boolean savePicURL(String userAvatar,Integer userId) {
+        return userDao.savePic(userAvatar,userId)>0;
     }
 
 
