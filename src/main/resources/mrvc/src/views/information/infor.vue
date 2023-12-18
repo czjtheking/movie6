@@ -83,12 +83,13 @@ export default {
       password: "",
       isShowEditUname: false,
       isShowEditPassword: false,
-      avatarURL: require("@/assets/test.png"), //这里默认测试
+      avatarURL: "", //这里默认测试
     };
   },
   methods: {
     handleAvatarSuccess(res, file) {
-      this.avatarUrl = URL.createObjectURL(file.raw);
+      console.log("修改头像结果：", res, file);
+      this.avatarUrl = res.data.path;
       this.$store.commit("user/setUserInfo", {
         userId: store.getters.getUserId,
         isAdmin: store.getters.getAuth,
