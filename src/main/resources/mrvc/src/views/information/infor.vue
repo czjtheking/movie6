@@ -6,6 +6,7 @@
       <el-upload
         class="avatar-uploader"
         action="http://localhost/users/avatar"
+        data="uid"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
       >
